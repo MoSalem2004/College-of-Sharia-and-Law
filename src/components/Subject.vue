@@ -558,7 +558,7 @@ export default {
               100
             ).toFixed(1);
             document.querySelector(".progress span.pro").innerHTML =
-              "تم التحميل بنسبة" + Progress + "%";
+              " تم التحميل بنسبة " + Progress + "%";
             document.querySelector(
               ".progress span.Progress"
             ).style.width = ` ${Progress}%`;
@@ -600,6 +600,7 @@ export default {
       let TheClass = this.Class;
       let file = document.querySelector("#upload_file_1").files[0];
       let isCleanDataCalled = false;
+      let isCleanDataCalled_1 = false;
 
       if (
         file instanceof Blob &&
@@ -626,7 +627,7 @@ export default {
               100
             ).toFixed(1);
             document.querySelector(".progress span.pro.pro_1").innerHTML =
-              "تم التحميل بنسبة" + Progress + "%";
+              " تم التحميل بنسبة " + Progress + "%";
             document.querySelector(
               ".progress span.Progress.Progress_1"
             ).style.width = ` ${Progress}%`;
@@ -653,12 +654,12 @@ export default {
                   books: [Object],
                 });
               }
-              if (Progress === "100.0") {
-                // this.SummarieState = true;
-                setTimeout(() => {
-                  this.CleanData_1();
-                }, 1000);
-              }
+            }
+            if (Progress === "100.0" && !isCleanDataCalled_1) {
+              isCleanDataCalled_1 = true;
+              setTimeout(() => {
+                this.CleanData_1();
+              }, 1000);
             }
           });
         };
@@ -673,6 +674,7 @@ export default {
       let TheClass = this.Class;
       let file = document.querySelector("#upload_file_2").files[0];
       let isCleanDataCalled = false;
+      let isCleanDataCalled_1 = false;
 
       if (
         file instanceof Blob &&
@@ -699,7 +701,7 @@ export default {
               100
             ).toFixed(1);
             document.querySelector(".progress span.pro.pro_2").innerHTML =
-              "تم التحميل بنسبة" + Progress + "%";
+              " تم التحميل بنسبة  " + Progress + "%";
             document.querySelector(
               ".progress span.Progress.Progress_2"
             ).style.width = ` ${Progress}%`;
@@ -725,7 +727,9 @@ export default {
                   books: [Object],
                 });
               }
-              if (Progress === "100.0") {
+
+              if (Progress === "100.0" && !isCleanDataCalled_1) {
+                isCleanDataCalled_1 = true;
                 setTimeout(() => {
                   this.CleanData_2();
                 }, 1000);
