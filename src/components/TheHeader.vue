@@ -2,7 +2,7 @@
   <div class="Header">
     <div class="container fit">
       <a class="logo" href="/">
-        <img src="../assets/main-logo.png" alt="" />
+        <img src="../../assets/main-logo.png" alt="" />
         <div>كلية الشريعة و القانون بالقاهرة</div>
       </a>
       <div class="buttons">
@@ -255,7 +255,7 @@ export default {
     }
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .Header .container {
     flex-direction: column;
     gap: 10px;
@@ -271,6 +271,7 @@ export default {
       > a {
         width: 48%;
         background: #fafafa;
+        height: 57px;
       }
     }
     .sign,
@@ -281,7 +282,7 @@ export default {
   }
 }
 
-@media (min-width: 600px) and (max-width: 900px) {
+@media (min-width: 500px) and (max-width: 900px) {
   .Header .container {
     flex-direction: column;
     .logo {

@@ -1,7 +1,7 @@
 <template>
   <div class="LandingPage">
-    <img src="../assets/cloud.jpg" alt="" id="cloud" />
-    <img src="../assets/الجامع-الازهر-الشريف-removebg-preview.png" alt="" />
+    <img src="../../assets/cloud.jpg" alt="" id="cloud" />
+    <img src="../../assets/الجامع-الازهر-الشريف-removebg-preview.png" alt="" />
   </div>
 </template>
 <script>
@@ -37,8 +37,7 @@ export default {
     transform: translate(-50%);
     width: 100%;
     &#cloud {
-      // left: 260px;
-      // width: calc(100% + 1100px);
+      left: 260px;
       width: 210%;
     }
   }
@@ -49,6 +48,9 @@ export default {
     img {
       width: 100%;
       height: 359.2px !important;
+      &#cloud {
+        width: 510%;
+      }
     }
   }
 }

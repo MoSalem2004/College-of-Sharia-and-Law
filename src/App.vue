@@ -245,7 +245,7 @@ h2.main-title {
 .form-floating > .form-select ~ label {
   transform: scale(0.85) translateY(-0.5rem) translateX(10.5rem) !important;
 }
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .form-floating > .form-control:focus ~ label,
   .form-floating > .form-control:not(:placeholder-shown) ~ label,
   .form-floating > .form-control-plaintext ~ label,
@@ -254,22 +254,29 @@ h2.main-title {
   }
   .container.fit.In {
     .content {
-      justify-content: space-between;
+      justify-content: center;
       .box {
-        width: 48%;
+        width: 100%;
       }
     }
   }
   h2.main-title {
-    font-size: 23px;
+    font-size: 21px;
   }
   h1 {
     & > span {
-      font-size: 23px;
+      font-size: 21px;
     }
   }
+  .container.fit.In h1 > div {
+    font-size: 13px;
+    text-align: center;
+  }
+  .order {
+    order: -1;
+  }
 }
-@media (min-width: 600px) and (max-width: 993px) {
+@media (min-width: 500px) and (max-width: 993px) {
   .form-floating > .form-control:focus ~ label,
   .form-floating > .form-control:not(:placeholder-shown) ~ label,
   .form-floating > .form-control-plaintext ~ label,

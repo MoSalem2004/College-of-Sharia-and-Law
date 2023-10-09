@@ -24,12 +24,8 @@
       :Class="this.class"
       @close_modal_1="close_modal_1"
     />
-<<<<<<< HEAD
+
     <div class="counter">( <span></span> ) مادة دراسية</div>
-=======
-   
-    <div class="counter">( <span></span> ) مواد دراسية</div>
->>>>>>> 18456a90478bf55a26ad36f97af9c6bf620d26c2
     <div class="content">
       <div
         class="box"
