@@ -24,7 +24,7 @@
       :Class="this.class"
       @close_modal_1="close_modal_1"
     />
-    <div class="Admin_State" v-show="Admin_State">الأدمين</div>
+   
     <div class="counter">( <span></span> ) مواد دراسية</div>
     <div class="content">
       <div
