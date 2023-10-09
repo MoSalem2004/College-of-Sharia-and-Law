@@ -268,17 +268,22 @@ export default {
     .buttons {
       width: 100%;
       justify-content: space-between;
+      height: 0;
+      display: none;
       > a {
         width: 48%;
         background: #fafafa;
-        height: 57px;
+        height: 0;
       }
     }
     .sign,
     .Sign_In {
       margin-right: auto;
-      margin: 15px auto 0 0;
+      // margin: 15px auto 0 0;
     }
+  }
+  .Header .container .logo div {
+    font-size: 14px;
   }
 }
 
