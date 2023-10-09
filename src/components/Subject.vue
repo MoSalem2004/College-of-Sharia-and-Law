@@ -475,7 +475,6 @@ export default {
       await updateDoc(cityRef, {
         books: deleteField(),
       });
-      const path = "";
       this.Books = "";
       this.DeleteFunction();
     },
