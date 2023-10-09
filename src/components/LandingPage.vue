@@ -42,7 +42,19 @@ export default {
     }
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 500px) {
+  .LandingPage {
+    height: 359.2px !important;
+    img {
+      width: 100%;
+      height: 359.2px !important;
+      &#cloud {
+        width: 510%;
+      }
+    }
+  }
+}
+@media (min-width: 500px) and (max-width: 993px) {
   .LandingPage {
     height: 359.2px !important;
     img {
