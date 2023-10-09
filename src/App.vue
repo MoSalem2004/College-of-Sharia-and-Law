@@ -269,14 +269,14 @@ h2.main-title {
   }
 }
 
-@media (min-width: 900px) {
-  // .container.fit.In {
-  //   .content {
-  //     justify-content: space-between;
-  //     .box {
-  //       width: 48%;
-  //     }
-  //   }
-  // }
+@media (min-width: 900px) and (max-width: 1067px) {
+  .container.fit.In {
+    .content {
+      justify-content: space-between;
+      .box {
+        width: 48%;
+      }
+    }
+  }
 }
 </style>
