@@ -492,7 +492,7 @@ export default {
       });
       setTimeout(() => {
         this.CounterRecordings();
-      }, 10);
+      }, 100);
       this.Books_2?.sort((a, b) => b.Time.toMillis() - a.Time.toMillis());
       //   }
     },
@@ -508,7 +508,7 @@ export default {
       });
       setTimeout(() => {
         this.CounterSummari();
-      }, 10);
+      }, 100);
       this.Books_1?.sort((a, b) => b.Time.toMillis() - a.Time.toMillis());
       //   }
     },
