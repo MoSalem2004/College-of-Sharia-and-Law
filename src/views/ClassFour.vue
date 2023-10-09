@@ -1,11 +1,14 @@
 <template>
   <div class="container fit In" id="logo" v-if="show">
     <nav aria-label="breadcrumb">
-      <ol class="breadcrumb" style="direction: ltr">
+      <ol
+        class="breadcrumb"
+        style="direction: ltr; display: flex; justify-content: end"
+      >
         <li class="breadcrumb-item active" aria-current="page">
           الفرقة الرابعة
         </li>
-        <li class="breadcrumb-item">
+        <li class="breadcrumb-item order">
           <router-link to="/"> الفرق الدراسية </router-link>
         </li>
       </ol>

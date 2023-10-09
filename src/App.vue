@@ -245,7 +245,22 @@ h2.main-title {
 .form-floating > .form-select ~ label {
   transform: scale(0.85) translateY(-0.5rem) translateX(10.5rem) !important;
 }
+@media (max-width: 263px) {
+  h1 > span {
+    font-size: 16px !important;
+  }
+  .container.fit.In nav ol {
+    .order {
+      order: -1 !important;
+    }
+  }
+}
 @media (max-width: 500px) {
+  .container.fit.In nav ol {
+    .order {
+      order: 1;
+    }
+  }
   .form-floating > .form-control:focus ~ label,
   .form-floating > .form-control:not(:placeholder-shown) ~ label,
   .form-floating > .form-control-plaintext ~ label,
