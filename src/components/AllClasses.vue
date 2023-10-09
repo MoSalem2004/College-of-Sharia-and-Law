@@ -68,7 +68,12 @@ export default {
     }
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 263px) {
+  .container > a {
+    width: 100% !important;
+  }
+}
+@media (max-width: 500px) {
   .container {
     flex-wrap: wrap;
     > a {
@@ -77,7 +82,7 @@ export default {
     }
   }
 }
-@media (min-width: 600px) and (max-width: 900px) {
+@media (min-width: 500px) and (max-width: 900px) {
   .container {
     flex-wrap: wrap;
     > a {

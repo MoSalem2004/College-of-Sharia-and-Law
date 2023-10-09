@@ -249,17 +249,33 @@ h2.main-title {
   h1 > span {
     font-size: 16px !important;
   }
-  .container.fit.In nav ol {
-    .order {
-      order: -1 !important;
-    }
+  .breadcrumb-item + .breadcrumb-item {
+    order: -1 !important;
+    display: none;
+  }
+  .container.fit.In.popup header {
+    flex-direction: row;
+  }
+  .Header .container .logo div {
+    font-size: 11px !important;
+  }
+  .container.fit.In h1 {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .content .container .Conect {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .container.fit.In .breadcrumb-item.active {
+    color: var(--main-color);
+    font-size: 17px;
+    font-weight: bold;
   }
 }
 @media (max-width: 500px) {
-  .container.fit.In nav ol {
-    .order {
-      order: 1;
-    }
+  .breadcrumb-item + .breadcrumb-item {
+    order: 1;
   }
   .form-floating > .form-control:focus ~ label,
   .form-floating > .form-control:not(:placeholder-shown) ~ label,
