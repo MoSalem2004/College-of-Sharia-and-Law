@@ -413,14 +413,14 @@ export default {
       document.querySelector(
         ".feat.feat_2 .Head .header > span span"
       ).innerHTML = document.querySelectorAll(
-        ".feat.feat_2 .body .box[data-v-71e9112c]"
+        ".feat.feat_2 .body .box "
       ).length;
     },
     CounterSummari() {
       document.querySelector(
         ".feat.feat_1 .Head .header > span span"
       ).innerHTML = document.querySelectorAll(
-        ".feat.feat_1 .body .box[data-v-71e9112c]"
+        ".feat.feat_1 .body .box "
       ).length;
     },
     SummarieFunction() {
