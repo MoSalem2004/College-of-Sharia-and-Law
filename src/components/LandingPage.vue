@@ -56,12 +56,9 @@ export default {
 }
 @media (min-width: 500px) and (max-width: 993px) {
   .LandingPage {
-    height: 359.2px !important;
     img {
-      width: 100%;
-      height: 359.2px !important;
       &#cloud {
-        width: 510%;
+        width: 310%;
       }
     }
   }
