@@ -234,6 +234,17 @@ h2.main-title {
   width: 0;
   overflow: hidden;
 }
+.input-group > .form-control,
+.input-group > .form-select,
+.input-group > .form-floating {
+  overflow: hidden;
+}
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-control-plaintext ~ label,
+.form-floating > .form-select ~ label {
+  transform: scale(0.85) translateY(-0.5rem) translateX(10.5rem) !important;
+}
 @media (max-width: 600px) {
   .form-floating > .form-control:focus ~ label,
   .form-floating > .form-control:not(:placeholder-shown) ~ label,
@@ -259,6 +270,12 @@ h2.main-title {
   }
 }
 @media (min-width: 600px) and (max-width: 993px) {
+  .form-floating > .form-control:focus ~ label,
+  .form-floating > .form-control:not(:placeholder-shown) ~ label,
+  .form-floating > .form-control-plaintext ~ label,
+  .form-floating > .form-select ~ label {
+    transform: scale(0.85) translateY(-0.5rem) translateX(6.5rem) !important;
+  }
   .container.fit.In {
     .content {
       justify-content: space-between;

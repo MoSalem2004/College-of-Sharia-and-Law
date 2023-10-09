@@ -37,8 +37,9 @@ export default {
     transform: translate(-50%);
     width: 100%;
     &#cloud {
-      left: 260px;
-      width: calc(100% + 1100px);
+      // left: 260px;
+      // width: calc(100% + 1100px);
+      width: 210%;
     }
   }
 }

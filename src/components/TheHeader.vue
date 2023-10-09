@@ -285,7 +285,7 @@ export default {
   .Header .container {
     flex-direction: column;
     .logo {
-      justify-content: space-around;
+      justify-content: start;
       width: 100%;
     }
     .buttons {
