@@ -308,11 +308,14 @@ h2.main-title {
   }
 }
 @media (min-width: 500px) and (max-width: 993px) {
+  .container.fit.In.popup .Content {
+    justify-content: start !important;
+  }
   .form-floating > .form-control:focus ~ label,
   .form-floating > .form-control:not(:placeholder-shown) ~ label,
   .form-floating > .form-control-plaintext ~ label,
   .form-floating > .form-select ~ label {
-    transform: scale(0.85) translateY(-0.5rem) translateX(4.5rem) !important;
+    transform: scale(0.85) translateY(-0.5rem) translateX(3.5rem) !important;
   }
   .container.fit.In {
     .content {
