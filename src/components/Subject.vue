@@ -519,7 +519,6 @@ export default {
       querySnapshot.forEach((doc) => {
         if (doc.id === subject) {
           this.Books = doc.data().books;
-        } else {
         }
       });
     },
