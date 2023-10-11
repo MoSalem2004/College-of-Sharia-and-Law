@@ -15,9 +15,15 @@
     </nav>
     <h1>
       <span>الفرقة الأولي</span>
-      <div @click="close_modal">
-        <font-awesome-icon :icon="['fas', 'file-excel']" />
-        <span>التقارير الأسبوعية</span>
+      <div>
+        <span @click="close_modal">
+          <font-awesome-icon :icon="['fas', 'file-excel']" />
+          <span>التقارير الأسبوعية</span>
+        </span>
+        <span>
+          <font-awesome-icon :icon="['fas', 'book']" />
+          <span>كتب مجانية</span>
+        </span>
       </div>
     </h1>
     <Report v-if="Active" :Class="this.class" @close_modal="close_modal" />

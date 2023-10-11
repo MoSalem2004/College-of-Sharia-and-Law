@@ -41,13 +41,6 @@ body {
   // display: flex;
   // justify-content: space-between;
 }
-#app {
-  // min-height: 100vh;
-  // width: 100%;
-  // display: flex;
-  // flex-direction: column;
-  // gap: 20px;
-}
 a {
   text-decoration: none !important;
   color: black !important;
@@ -150,12 +143,23 @@ h2.main-title {
       justify-content: center;
       align-items: center;
       gap: 10px;
-      font-size: 16px;
-      border: 1px solid var(--main-color);
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      background: #ffff;
+      & > span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 16px;
+        border: 1px solid var(--main-color);
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #ffff;
+        text-align: center;
+        transition: 0.3s;
+        &:hover {
+          background: var(--main-color);
+          color: #fff;
+        }
+      }
     }
   }
   .counter {
@@ -245,6 +249,42 @@ h2.main-title {
 .form-floating > .form-select ~ label {
   transform: scale(0.85) translateY(-0.5rem) translateX(10.5rem) !important;
 }
+@media (min-width: 900px) and (max-width: 1067px) {
+  .container.fit.In {
+    .content {
+      justify-content: space-between;
+      .box {
+        width: 48%;
+      }
+    }
+  }
+}
+@media (min-width: 500px) and (max-width: 993px) {
+  h1 {
+    flex-direction: column;
+    gap: 15px;
+    & > div {
+      justify-content: space-between !important;
+    }
+  }
+  .container.fit.In.popup .Content {
+    justify-content: flex-start !important;
+  }
+  .form-floating > .form-control:focus ~ label,
+  .form-floating > .form-control:not(:placeholder-shown) ~ label,
+  .form-floating > .form-control-plaintext ~ label,
+  .form-floating > .form-select ~ label {
+    transform: scale(0.85) translateY(-0.5rem) translateX(3.5rem) !important;
+  }
+  .container.fit.In {
+    .content {
+      justify-content: space-between;
+      .box {
+        width: 48%;
+      }
+    }
+  }
+}
 @media (max-width: 263px) {
   h1 > span {
     font-size: 16px !important;
@@ -259,9 +299,15 @@ h2.main-title {
   .Header .container .logo div {
     font-size: 11px !important;
   }
-  .container.fit.In h1 {
-    flex-direction: column;
-    gap: 15px;
+  h1 {
+    & > div {
+      flex-direction: column;
+      justify-content: center;
+      & > span {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   }
   .content .container .Conect {
     flex-direction: column;
@@ -283,13 +329,18 @@ h2.main-title {
     color: var(--main-color);
     font-size: 17px;
     font-weight: bold;
+    order: -1;
   }
-  h1 > span {
-    font-size: 16px !important;
+  h1 {
+    flex-direction: column;
+    gap: 15px;
+    & > div {
+      justify-content: space-between !important;
+    }
   }
   .breadcrumb-item + .breadcrumb-item {
     order: -1 !important;
-    display: none;
+    // display: none;
   }
   .container.fit.In.popup header {
     flex-direction: column-reverse;
@@ -321,42 +372,12 @@ h2.main-title {
       font-size: 21px;
     }
   }
-  .container.fit.In h1 > div {
-    font-size: 13px;
-    text-align: center;
-  }
+  // .container.fit.In h1 > div {
+  //   font-size: 13px;
+  //   text-align: center;
+  // }
   .order {
     order: -1;
-  }
-}
-@media (min-width: 500px) and (max-width: 993px) {
-  .container.fit.In.popup .Content {
-    justify-content: flex-start !important;
-  }
-  .form-floating > .form-control:focus ~ label,
-  .form-floating > .form-control:not(:placeholder-shown) ~ label,
-  .form-floating > .form-control-plaintext ~ label,
-  .form-floating > .form-select ~ label {
-    transform: scale(0.85) translateY(-0.5rem) translateX(3.5rem) !important;
-  }
-  .container.fit.In {
-    .content {
-      justify-content: space-between;
-      .box {
-        width: 48%;
-      }
-    }
-  }
-}
-
-@media (min-width: 900px) and (max-width: 1067px) {
-  .container.fit.In {
-    .content {
-      justify-content: space-between;
-      .box {
-        width: 48%;
-      }
-    }
   }
 }
 </style>
