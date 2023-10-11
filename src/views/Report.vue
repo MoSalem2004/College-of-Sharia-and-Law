@@ -317,7 +317,7 @@ export default {
       padding: 10px !important;
       ol {
         font-size: 14px !important;
-        justify-content: end;
+        justify-content: flex-end;
       }
     }
   }
@@ -334,7 +334,7 @@ export default {
       padding: 10px !important;
       ol {
         font-size: 15px !important;
-        justify-content: end;
+        justify-content: flex-end;
       }
     }
   }

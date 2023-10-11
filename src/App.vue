@@ -168,7 +168,7 @@ h2.main-title {
     margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 13px;
     .box {
       width: 32.4%;
@@ -254,7 +254,7 @@ h2.main-title {
     display: none;
   }
   .container.fit.In.popup header {
-    flex-direction: row;
+    flex-direction: column-reverse;
   }
   .Header .container .logo div {
     font-size: 11px !important;
@@ -272,10 +272,32 @@ h2.main-title {
     font-size: 17px;
     font-weight: bold;
   }
+  ol {
+    li {
+      text-align: right;
+    }
+  }
 }
 @media (max-width: 500px) {
+  .container.fit.In .breadcrumb-item.active {
+    color: var(--main-color);
+    font-size: 17px;
+    font-weight: bold;
+  }
+  h1 > span {
+    font-size: 16px !important;
+  }
   .breadcrumb-item + .breadcrumb-item {
-    order: 1;
+    order: -1 !important;
+    display: none;
+  }
+  .container.fit.In.popup header {
+    flex-direction: column-reverse;
+  }
+  ol {
+    li {
+      text-align: right;
+    }
   }
   .form-floating > .form-control:focus ~ label,
   .form-floating > .form-control:not(:placeholder-shown) ~ label,
@@ -309,7 +331,7 @@ h2.main-title {
 }
 @media (min-width: 500px) and (max-width: 993px) {
   .container.fit.In.popup .Content {
-    justify-content: start !important;
+    justify-content: flex-start !important;
   }
   .form-floating > .form-control:focus ~ label,
   .form-floating > .form-control:not(:placeholder-shown) ~ label,

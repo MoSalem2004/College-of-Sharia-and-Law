@@ -33,7 +33,7 @@
     <button class="done" @click="Add_Book()" :disabled="isClicked">تم</button>
     <div class="progress" v-if="progress">
       <span class="Progress"></span>
-      <span class="pro">تم التحميل بنسبة 0%</span>
+      <span class="pro"></span>
     </div>
   </div>
   <div class="Add_Book" v-if="Show_Add_1">
@@ -66,9 +66,9 @@
       />
     </div>
     <button class="done" @click="Add_Book_1" :disabled="isClicked_1">تم</button>
-    <div class="progress" v-if="progress_1">
+    <div class="progress">
       <span class="Progress Progress_1"></span>
-      <span class="pro pro_1">تم التحميل بنسبة 0%</span>
+      <span class="pro pro_1" v-if="progress_1"></span>
     </div>
   </div>
   <div class="Add_Book" v-if="Show_Add_2">
@@ -103,7 +103,7 @@
     <button class="done" @click="Add_Book_2" :disabled="isClicked_2">تم</button>
     <div class="progress" v-if="progress_2">
       <span class="Progress Progress_2"></span>
-      <span class="pro pro_2">تم التحميل بنسبة 0%</span>
+      <span class="pro pro_2"></span>
     </div>
   </div>
   <div class="main_popup" @click="closeModal"></div>
@@ -119,6 +119,20 @@
         <span @click="DeleteFunction">لا</span>
       </div>
     </div>
+
+    <div
+      class="main_popup"
+      v-if="Main_Delete"
+      @click="Main_Delete_Function"
+    ></div>
+    <div class="delete_box" v-if="Main_Delete">
+      <div>متأكد من أنك تريد الحذف ؟</div>
+      <div>
+        <span class="remove">حذف</span>
+        <span @click="Main_Delete_Function">لا</span>
+      </div>
+    </div>
+
     <div
       class="main_popup"
       v-if="DeleteState_2"
@@ -187,6 +201,11 @@
 
     <div class="body">
       <div class="box" v-for="Book in Books" :key="Book">
+        <font-awesome-icon
+          :icon="['fas', 'trash-alt']"
+          style="font-size: 20px"
+          v-show="Admin_State"
+        />
         <div class="title">{{ Book.BookName }}</div>
         <div class="size">{{ Book.BookSize }}</div>
         <a class="UploadBook" :href="Book.BookLink">
@@ -203,21 +222,28 @@
             <font-awesome-icon :icon="['fas', 'arrow-circle-down']" />
           </span>
         </div>
-        <font-awesome-icon
-          :icon="['fas', 'trash-alt']"
-          class="plus"
-          @click="DeleteFunction_1"
-          v-show="Admin_State"
-        />
-        <font-awesome-icon
-          :icon="['fas', 'plus-circle']"
-          class="plus"
-          @click="closeModal_2"
-          v-show="Admin_State"
-        />
+        <span>
+          <font-awesome-icon
+            :icon="['fas', 'trash-alt']"
+            class="plus"
+            @click="DeleteFunction_1"
+            v-show="Admin_State"
+          />
+          <font-awesome-icon
+            :icon="['fas', 'plus-circle']"
+            class="plus"
+            @click="closeModal_2"
+            v-show="Admin_State"
+          />
+        </span>
       </div>
       <div class="body hidden">
         <div class="box" v-for="(Book, index) in Books_1" :key="Book">
+          <font-awesome-icon
+            :icon="['fas', 'trash-alt']"
+            style="font-size: 20px"
+            v-show="Admin_State"
+          />
           <div class="number">{{ index + 1 }}</div>
           <div class="title">{{ Book.BookName }}</div>
           <div class="size">{{ Book.BookSize }}</div>
@@ -248,21 +274,28 @@
             <font-awesome-icon :icon="['fas', 'arrow-circle-down']" />
           </span>
         </div>
-        <font-awesome-icon
-          :icon="['fas', 'trash-alt']"
-          class="plus"
-          @click="DeleteFunction_2"
-          v-show="Admin_State"
-        />
-        <font-awesome-icon
-          :icon="['fas', 'plus-circle']"
-          class="plus"
-          @click="closeModal_3"
-          v-show="Admin_State"
-        />
+        <span>
+          <font-awesome-icon
+            :icon="['fas', 'trash-alt']"
+            class="plus"
+            @click="DeleteFunction_2"
+            v-show="Admin_State"
+          />
+          <font-awesome-icon
+            :icon="['fas', 'plus-circle']"
+            class="plus"
+            @click="closeModal_3"
+            v-show="Admin_State"
+          />
+        </span>
       </div>
       <div class="body hidden">
         <div class="box" v-for="(Book, index) in Books_2" :key="Book">
+          <font-awesome-icon
+            :icon="['fas', 'trash-alt']"
+            style="font-size: 20px"
+            v-show="Admin_State"
+          />
           <div class="number">{{ index + 1 }}</div>
           <div class="title">{{ Book.BookName }}</div>
           <div class="size">{{ Book.BookSize }}</div>
@@ -360,6 +393,7 @@ export default {
       isClicked: false,
       isClicked_1: false,
       isClicked_2: false,
+      Main_Delete: null,
     };
   },
   mounted() {
@@ -376,8 +410,132 @@ export default {
     setTimeout(() => {
       this.Get_Data();
     }, 2000);
+    setTimeout(() => {
+      this.DeleteBook();
+      this.DeleteSummarie();
+      this.DeleteRecordings();
+    }, 3000);
   },
   methods: {
+    async DeleteRecordings() {
+      let subject = this.Subject_Name;
+      let TheClass = this.Class;
+      let btn = document.querySelectorAll(".feat_2 .body .box > svg");
+      for (let i = 0; i < btn.length; i++) {
+        btn[i].onclick = () => {
+          let deletebtn;
+          this.Main_Delete_Function();
+          setTimeout(() => {
+            document.querySelector(".delete_box > div span.remove").onclick =
+              async () => {
+                deletebtn = true;
+                if (deletebtn) {
+                  const querySnapshot = await getDocs(
+                    collection(db, `تسجيلات ${TheClass}`)
+                  );
+                  querySnapshot.forEach(async (doc) => {
+                    if (doc.id === subject) {
+                      const data = doc.data();
+                      console.log(data.books);
+                      data.books.sort(
+                        (a, b) => b.Time.toMillis() - a.Time.toMillis()
+                      );
+                      const newArray = data.books.filter(
+                        (item, index) => index !== i
+                      );
+                      console.log("تم حذف العنصر بنجاح");
+                      await updateDoc(doc.ref, { books: newArray });
+                      btn[i].parentElement.remove();
+                    }
+                  });
+                }
+                this.Main_Delete_Function();
+                setTimeout(() => {
+                  this.CounterRecordings();
+                }, 500);
+              };
+          }, 10);
+        };
+      }
+    },
+    async DeleteSummarie() {
+      console.log("DeleteSummarie");
+      let subject = this.Subject_Name;
+      let TheClass = this.Class;
+      let btn = document.querySelectorAll(".feat_1 .body .box > svg");
+      for (let i = 0; i < btn.length; i++) {
+        btn[i].onclick = () => {
+          let deletebtn;
+          this.Main_Delete_Function();
+          setTimeout(() => {
+            document.querySelector(".delete_box > div span.remove").onclick =
+              async () => {
+                deletebtn = true;
+                if (deletebtn) {
+                  const querySnapshot = await getDocs(
+                    collection(db, `ملخصات ${TheClass}`)
+                  );
+                  querySnapshot.forEach(async (doc) => {
+                    if (doc.id === subject) {
+                      const data = doc.data();
+                      console.log(data.books);
+                      data.books.sort(
+                        (a, b) => b.Time.toMillis() - a.Time.toMillis()
+                      );
+                      const newArray = data.books.filter(
+                        (item, index) => index !== i
+                      );
+                      console.log("تم حذف العنصر بنجاح");
+                      await updateDoc(doc.ref, { books: newArray });
+                      btn[i].parentElement.remove();
+                    }
+                  });
+                }
+                this.Main_Delete_Function();
+                setTimeout(() => {
+                  this.CounterSummarie();
+                }, 500);
+              };
+          }, 10);
+        };
+      }
+    },
+    DeleteBook() {
+      let subject = this.Subject_Name;
+      let TheClass = this.Class;
+      let btn = document.querySelectorAll(" .body .box > svg");
+      for (let i = 0; i < btn.length; i++) {
+        btn[i].onclick = () => {
+          let deletebtn;
+          this.Main_Delete_Function();
+          setTimeout(() => {
+            document.querySelector(".delete_box > div span.remove").onclick =
+              async () => {
+                deletebtn = true;
+                if (deletebtn) {
+                  const querySnapshot = await getDocs(
+                    collection(db, `كتب ${TheClass}`)
+                  );
+                  querySnapshot.forEach(async (doc) => {
+                    if (doc.id === subject) {
+                      const data = doc.data();
+                      console.log(data.books);
+
+                      const newArray = data.books.filter(
+                        (item, index) => index !== i
+                      );
+                      console.log("تم حذف العنصر بنجاح");
+                      await updateDoc(doc.ref, { books: newArray });
+                      btn[i].parentElement.remove();
+                    }
+                  });
+                }
+                this.Main_Delete_Function();
+              };
+          }, 10);
+        };
+      }
+    },
     Add_Report_2() {
       let file = document.querySelector("#upload_file_2").files[0];
       const filePath = file.name;
@@ -399,6 +557,9 @@ export default {
       document.getElementById("File_Name").innerHTML = filePath;
       document.getElementById("File_Size").innerHTML = size;
     },
+    Main_Delete_Function() {
+      this.Main_Delete = !this.Main_Delete;
+    },
     DeleteFunction_2() {
       this.DeleteState_2 = !this.DeleteState_2;
     },
@@ -416,7 +577,7 @@ export default {
         ".feat.feat_2 .body .box "
       ).length;
     },
-    CounterSummari() {
+    CounterSummarie() {
       document.querySelector(
         ".feat.feat_1 .Head .header > span span"
       ).innerHTML = document.querySelectorAll(
@@ -490,10 +651,10 @@ export default {
           this.Books_2 = doc.data().books;
         }
       });
+      this.Books_2?.sort((a, b) => b.Time.toMillis() - a.Time.toMillis());
       setTimeout(() => {
         this.CounterRecordings();
-      }, 10);
-      this.Books_2?.sort((a, b) => b.Time.toMillis() - a.Time.toMillis());
+      }, 100);
       //   }
     },
     async Get_Data_1() {
@@ -506,10 +667,11 @@ export default {
           this.Books_1 = doc.data().books;
         }
       });
-      setTimeout(() => {
-        this.CounterSummari();
-      }, 10);
       this.Books_1?.sort((a, b) => b.Time.toMillis() - a.Time.toMillis());
+
+      setTimeout(() => {
+        this.CounterSummarie();
+      }, 100);
       //   }
     },
     async Get_Data() {
@@ -521,6 +683,7 @@ export default {
           this.Books = doc.data().books;
         }
       });
+      this.DeleteBook();
     },
     async Add_Book() {
       this.isClicked = true;
@@ -534,11 +697,12 @@ export default {
         file instanceof Blob &&
         document.getElementById("Book_Name").value !== ""
       ) {
+        this.progress = true;
+
         const filePath = file.name;
         const fileName = filePath.split("\\").pop();
         const reader = new FileReader();
 
-        this.progress = true;
         reader.onload = async () => {
           const storage = getStorage(app);
           const storageRef = ref(
@@ -606,11 +770,15 @@ export default {
         file instanceof Blob &&
         document.getElementById("Summarie").value !== ""
       ) {
+        this.progress_1 = true;
+        setTimeout(() => {
+          document.querySelector(".progress span.pro.pro_1").innerHTML =
+            " تم التحميل بنسبة " + 0 + "%";
+        }, 10);
         const filePath = file.name;
         const fileName = filePath.split("\\").pop();
         const reader = new FileReader();
 
-        this.progress_1 = true;
         reader.onload = async () => {
           const storage = getStorage(app);
           const storageRef = ref(storage, fileName);
@@ -626,11 +794,13 @@ export default {
               (snapshot.bytesTransferred / snapshot.totalBytes) *
               100
             ).toFixed(1);
-            document.querySelector(".progress span.pro.pro_1").innerHTML =
-              " تم التحميل بنسبة " + Progress + "%";
-            document.querySelector(
-              ".progress span.Progress.Progress_1"
-            ).style.width = ` ${Progress}%`;
+            if (document.querySelector(".progress span.pro.pro_1")) {
+              document.querySelector(".progress span.pro.pro_1").innerHTML =
+                " تم التحميل بنسبة " + Progress + "%";
+              document.querySelector(
+                ".progress span.Progress.Progress_1"
+              ).style.width = ` ${Progress}%`;
+            }
 
             const bookRef = doc(db, `ملخصات ${TheClass}`, subject);
             const docSnap = await getDoc(bookRef);
@@ -680,11 +850,15 @@ export default {
         file instanceof Blob &&
         document.getElementById("Recordings").value !== ""
       ) {
+        this.progress_2 = true;
+        setTimeout(() => {
+          document.querySelector(".progress span.pro.pro_2").innerHTML =
+            " تم التحميل بنسبة " + 0 + "%";
+        }, 10);
         const filePath = file.name;
         const fileName = filePath.split("\\").pop();
         const reader = new FileReader();
 
-        this.progress_2 = true;
         reader.onload = async () => {
           const storage = getStorage(app);
           const storageRef = ref(storage, fileName);
@@ -749,6 +923,10 @@ export default {
         this.Get_Data_2();
         this.Show_Add_2 = false;
       }, 1000);
+      setTimeout(() => {
+        this.DeleteRecordings();
+        this.CounterRecordings();
+      }, 2000);
     },
     CleanData_1() {
       this.Summarie = "";
@@ -757,6 +935,10 @@ export default {
         this.Get_Data_1();
         this.Show_Add_1 = false;
       }, 1000);
+      setTimeout(() => {
+        this.DeleteSummarie();
+        this.CounterSummarie();
+      }, 2000);
     },
     CleanData() {
       this.Book_Name = "";
@@ -949,6 +1131,7 @@ export default {
   width: 100%;
   margin: 10px auto;
   background: #fafafa;
+  border-radius: 5px;
   .Head {
     display: flex;
     gap: 10px;
@@ -969,9 +1152,14 @@ export default {
         gap: 10px;
       }
     }
+    & > span {
+      display: flex;
+      gap: 10px;
+      margin: 15px auto 5px 10px;
+    }
     svg.plus {
       color: var(--main-color);
-      font-size: 25px;
+      font-size: 20px;
     }
   }
 }
@@ -1012,6 +1200,12 @@ export default {
   }
 }
 @media (max-width: 500px) {
+  .feat .Head {
+    flex-direction: column-reverse;
+    // & > span {
+    //   margin-right: auto;
+    // }
+  }
   .body {
     flex-direction: column;
     .box {
@@ -1020,6 +1214,12 @@ export default {
   }
 }
 @media (min-width: 500px) and (max-width: 993px) {
+  .feat .Head {
+    flex-direction: column-reverse;
+    // & > span {
+    //   margin-right: auto;
+    // }
+  }
   .body {
     flex-direction: column;
     .box {

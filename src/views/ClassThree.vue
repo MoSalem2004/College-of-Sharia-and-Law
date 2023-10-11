@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
       <ol
         class="breadcrumb"
-        style="direction: ltr; display: flex; justify-content: end"
+        style="direction: ltr; display: flex; justify-content: flex-end"
       >
         <li class="breadcrumb-item active" aria-current="page">
           الفرقة الثالثة
@@ -98,7 +98,7 @@ export default {
           type: "ترم أول",
         },
         {
-          name: "المرافعات",
+          name: "قانون المرافعات",
           type: "ترم ثاني",
         },
         {
@@ -107,10 +107,6 @@ export default {
         },
         {
           name: "الأحوال الشخصية للمسلمين",
-          type: "ترم ثاني",
-        },
-        {
-          name: "اللغة الأجنبية",
           type: "ترم ثاني",
         },
       ],

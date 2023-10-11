@@ -260,7 +260,7 @@ export default {
     flex-direction: column;
     gap: 10px;
     .logo {
-      justify-content: start;
+      justify-content: flex-start;
       width: 100%;
       padding-bottom: 10px;
       border-bottom: 1px solid #ddd;
@@ -291,7 +291,7 @@ export default {
   .Header .container {
     flex-direction: column;
     .logo {
-      justify-content: start;
+      justify-content: flex-start;
       width: 100%;
     }
     .buttons {

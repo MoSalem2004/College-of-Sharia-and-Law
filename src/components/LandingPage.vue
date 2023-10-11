@@ -1,5 +1,6 @@
 <template>
   <div class="LandingPage">
+    <img src="../../assets/cloud.jpg" alt="" id="cloud_1" />
     <img src="../../assets/cloud.jpg" alt="" id="cloud" />
     <img src="../../assets/الجامع-الازهر-الشريف-removebg-preview.png" alt="" />
   </div>

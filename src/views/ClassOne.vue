@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
       <ol
         class="breadcrumb"
-        style="direction: ltr; display: flex; justify-content: end"
+        style="direction: ltr; display: flex; justify-content: flex-end"
       >
         <li class="breadcrumb-item active" aria-current="page">
           الفرقة الأولي

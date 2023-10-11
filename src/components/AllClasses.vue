@@ -39,7 +39,7 @@ export default {
     position: relative;
     flex-direction: column;
     cursor: pointer;
-    justify-content: end;
+    justify-content: flex-end;
     gap: 10px;
     transition: 0.3s;
     &:hover {
