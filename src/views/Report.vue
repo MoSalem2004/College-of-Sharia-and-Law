@@ -92,6 +92,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 export default {
   name: "TheReport",
+  emits: ["close_modal"],
   props: ["Class"],
   components: {
     LodingIcon,
@@ -226,8 +227,8 @@ export default {
   border-radius: 5px;
   width: 90%;
   max-height: 90vh;
-  min-height: 50vh;
-  overflow: auto;
+  min-height: 61vh;
+  // overflow: auto;
   header {
     display: flex;
     width: 100%;
@@ -269,7 +270,7 @@ export default {
       a {
         color: #fff !important;
       }
-      svg {
+      & > svg {
         position: absolute;
         left: 12px;
         color: var(--main-color);
@@ -310,7 +311,7 @@ export default {
     }
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   header:not(.login) {
     flex-direction: column-reverse;
     nav {
@@ -338,12 +339,12 @@ export default {
       }
     }
   }
-  .Content {
-    .box {
-      min-width: 48%;
-      width: fit-content !important;
-    }
-  }
+  // .Content {
+  //   .box {
+  //     min-width: 48%;
+  //     width: fit-content !important;
+  //   }
+  // }
 }
 
 @media (min-width: 600px) and (max-width: 993px) {

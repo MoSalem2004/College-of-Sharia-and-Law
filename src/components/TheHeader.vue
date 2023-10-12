@@ -22,6 +22,9 @@
             <div class="add" v-show="Mosalem_Admin" @click="close_modal_4">
               إدارة الأدمين
             </div>
+            <div class="add" v-show="Mosalem_Admin" @click="close_modal_5">
+              طلبات التبرع
+            </div>
             <button @click="logout">تسجيل خروج</button>
           </div>
           <div
@@ -42,6 +45,7 @@
   <ChangePassword v-if="modalActive_2" @close_modal_2="close_modal_2" />
   <TheSignUp v-if="modalActive_3" @close_modal_3="close_modal_3" />
   <AdminManagement v-if="modalActive_4" @close_modal_4="close_modal_4" />
+  <BookRequests v-if="modalActive_5" @close_modal_5="close_modal_5" />
 </template>
 
 <script>
@@ -49,6 +53,7 @@ import TheLogin from "./TheLogin.vue";
 import ChangePassword from "./ChangePassword.vue";
 import TheSignUp from "./TheSignUp.vue";
 import AdminManagement from "./AdminManagement.vue";
+import BookRequests from "./BookRequests.vue";
 export default {
   name: "TheHeader",
   components: {
@@ -56,6 +61,7 @@ export default {
     ChangePassword,
     TheSignUp,
     AdminManagement,
+    BookRequests,
   },
   data() {
     return {
@@ -64,6 +70,7 @@ export default {
       modalActive_2: null,
       modalActive_3: null,
       modalActive_4: null,
+      modalActive_5: null,
       username: "",
       useremail: "",
       UserState: null,
@@ -95,6 +102,10 @@ export default {
           })
           .join(" ");
       }
+    },
+    close_modal_5() {
+      this.modalActive_5 = !this.modalActive_5;
+      this.state = false;
     },
     close_modal_4() {
       this.modalActive_4 = !this.modalActive_4;

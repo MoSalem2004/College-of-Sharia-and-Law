@@ -20,13 +20,24 @@
           <font-awesome-icon :icon="['fas', 'file-excel']" />
           <span>التقارير الأسبوعية</span>
         </span>
-        <span>
+        <span @click="close_modal_2">
           <font-awesome-icon :icon="['fas', 'book']" />
           <span>كتب مجانية</span>
         </span>
       </div>
     </h1>
-    <Report v-if="Active" :Class="this.class" @close_modal="close_modal" />
+    <!-- <Report v-if="Active" :Class="this.class" @close_modal="close_modal" /> -->
+    <Report
+      key="0"
+      :Class="this.class"
+      :onClose_modal="close_modal"
+      v-if="Active"
+    />
+    <FreeBooks
+      @close_modal_2="close_modal_2"
+      v-if="Show_Book"
+      :Class="this.class"
+    />
     <TheSubject
       v-if="Show_Subject"
       :Subject_Name="this.Subject_Name"
@@ -52,18 +63,21 @@
 <script>
 import Report from "./Report.vue";
 import TheSubject from "../components/Subject.vue";
+import FreeBooks from "../components/FreeBooks.vue";
 export default {
   name: "ClassOne",
-  emits: ["close_modal_1"],
+  emits: ["close_modal_2", "close_modal_1", "close_modal"],
   components: {
     Report,
     TheSubject,
+    FreeBooks,
   },
   data() {
     return {
       show: null,
       Subject_Name: null,
       Show_Subject: null,
+      Show_Book: null,
       Admin_State: null,
       Active: null,
       class: "",
@@ -138,6 +152,9 @@ export default {
           boxes[i].classList.add("none");
         }
       }
+    },
+    close_modal_2() {
+      this.Show_Book = !this.Show_Book;
     },
     close_modal_1() {
       this.Show_Subject = !this.Show_Subject;

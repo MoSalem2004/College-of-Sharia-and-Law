@@ -41,6 +41,16 @@ body {
   // display: flex;
   // justify-content: space-between;
 }
+.Container_Form {
+  width: 90%;
+  overflow: scroll;
+  height: 90vh;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 a {
   text-decoration: none !important;
   color: black !important;
@@ -229,7 +239,8 @@ h2.main-title {
     }
   }
 }
-.box.none {
+
+.none {
   pointer-events: none;
 }
 .hidden {
