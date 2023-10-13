@@ -279,7 +279,7 @@ export default {
       for (let i = 0; i < btn.length; i++) {
         btn[i].onclick = async () => {
           let deletebtn;
-
+          btn[i].parentElement.parentElement.classList.add("true");
           deletebtn = true;
           if (deletebtn) {
             const bookRef = doc(db, "طلبات كتب مجانية", this.Allclass[1]);
@@ -310,7 +310,7 @@ export default {
       for (let i = 0; i < btn.length; i++) {
         btn[i].onclick = async () => {
           let deletebtn;
-
+          btn[i].parentElement.parentElement.classList.add("true");
           deletebtn = true;
           if (deletebtn) {
             const bookRef = doc(db, "طلبات كتب مجانية", this.Allclass[2]);
@@ -341,7 +341,7 @@ export default {
       for (let i = 0; i < btn.length; i++) {
         btn[i].onclick = async () => {
           let deletebtn;
-
+          btn[i].parentElement.parentElement.classList.add("true");
           deletebtn = true;
           if (deletebtn) {
             const bookRef = doc(db, "طلبات كتب مجانية", this.Allclass[3]);
@@ -553,6 +553,11 @@ export default {
   gap: 10px;
   flex-direction: column;
   margin: 10px 0;
+  & > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
   .box {
     width: 100%;
     border: 1px solid #ddd;
@@ -590,6 +595,10 @@ export default {
 }
 .true {
   text-decoration: line-through;
-  background: #51c951;
+  background: #eee;
+  order: 1;
+  .main_icon > svg:first-child {
+    background: #3fbb3f;
+  }
 }
 </style>

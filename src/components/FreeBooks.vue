@@ -131,22 +131,20 @@ export default {
     },
     copyTextSvg(event) {
       event.stopPropagation();
-      event.target.parentElement.parentElement.style.color =
-        "var(--main-color)";
+      event.target.parentElement.parentElement.classList.add("green");
       setTimeout(() => {
-        event.target.parentElement.parentElement.style.color = "#3fbb3f";
+        event.target.parentElement.parentElement.classList.remove("green");
       }, 5000);
 
       navigator.clipboard.writeText(
-        event.target.parentElement.parentElement.parentElement.children[0]
-          .innerHTML
+        event.target.parentElement.parentElement.children[0].innerHTML
       );
     },
     copyText(event) {
       event.stopPropagation();
-      event.target.parentElement.style.color = "var(--main-color)";
+      event.target.parentElement.classList.add("green");
       setTimeout(() => {
-        event.target.parentElement.style.color = "#3fbb3f";
+        event.target.parentElement.classList.remove("green");
       }, 5000);
       navigator.clipboard.writeText(
         event.target.parentElement.parentElement.children[0].innerHTML
@@ -154,9 +152,9 @@ export default {
     },
     copyTextDad(event) {
       event.stopPropagation();
-      event.target.style.color = "#3fbb3f";
+      event.target.classList.add("green");
       setTimeout(() => {
-        event.target.style.color = "var(--main-color)";
+        event.target.classList.remove("green");
       }, 5000);
       console.log(event.target.parentElement.children[0]);
       navigator.clipboard.writeText(
@@ -265,6 +263,6 @@ nav {
   }
 }
 .green {
-  color: #3fbb3f;
+  color: #3fbb3f !important;
 }
 </style>

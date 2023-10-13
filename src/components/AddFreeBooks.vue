@@ -52,6 +52,15 @@
           </div>
         </div>
       </div>
+      <div class="error" v-show="error">{{ errormsg }}</div>
+      <div class="toast show" v-if="Show_msg">
+        <span class="toast-body">
+          <font-awesome-icon :icon="['fas', 'check-circle']" />
+          <span>
+            {{ msg }}
+          </span>
+        </span>
+      </div>
       <div class="footer">
         <button @click="SendData">
           <font-awesome-icon :icon="['fas', 'paper-plane']" />
@@ -60,7 +69,7 @@
       </div>
     </div>
   </div>
-  <div
+  <!-- <div
     class="toast show"
     role="alert"
     aria-live="assertive"
@@ -83,7 +92,7 @@
         {{ msg }}
       </span>
     </div>
-  </div>
+  </div> -->
 </template>
 <script>
 import {
@@ -116,8 +125,10 @@ export default {
   props: ["Class"],
   data() {
     return {
-      Show_msg: true,
+      Show_msg: null,
       msg: "تم إرسال بيناتك للمشرف , وعند الموافقة عليها سوف يتم عرضها ",
+      error: null,
+      errormsg: "أدخل بيناتك صحيحة",
     };
   },
   methods: {
@@ -125,7 +136,8 @@ export default {
       let TheClass = this.Class;
       if (
         document.getElementById("Name").value !== "" &&
-        document.getElementById("number").value !== ""
+        document.getElementById("number").value !== "" &&
+        document.getElementById("number").value.length === 11
       ) {
         document.querySelector(".footer button").classList.add("none");
         const bookRef = doc(db, "طلبات كتب مجانية", TheClass);
@@ -155,6 +167,9 @@ export default {
           document.querySelector(".footer button").classList.remove("none");
           this.AddFreeBooksFunction();
         }, 5000);
+        this.error = false;
+      } else {
+        this.error = true;
       }
     },
     AddFreeBooksFunction() {
@@ -213,12 +228,9 @@ export default {
   }
 }
 .toast {
-  position: fixed;
-  bottom: 0;
-  left: 55%;
-  transform: translate(-50%, -50%);
-  z-index: 15;
-  width: 90%;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
 }
 .me-auto {
   margin: 0 10px 0 auto !important;
@@ -233,6 +245,10 @@ export default {
 }
 .toast-body {
   color: #35b635;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 0;
 }
 .MSG {
   background: #eee;
@@ -243,5 +259,9 @@ export default {
   gap: 10px;
   font-weight: bold;
   margin: 5px 0;
+}
+.error {
+  color: red;
+  text-align: center;
 }
 </style>
