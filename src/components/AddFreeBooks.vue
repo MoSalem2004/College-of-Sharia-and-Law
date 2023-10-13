@@ -3,6 +3,10 @@
     <div class="main_popup" @click="AddFreeBooksFunction"></div>
     <div class="book_box">
       <div class="header">
+        <span>
+          تبرع لطلاب
+          {{ this.Class }}
+        </span>
         <font-awesome-icon
           :icon="['fas', 'window-close']"
           @click="AddFreeBooksFunction"
@@ -193,7 +197,10 @@ export default {
   padding: 20px;
   border-radius: 5px;
   .header {
-    margin-right: auto;
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
     font-size: 25px;
     color: var(--main-color);
   }
@@ -263,5 +270,12 @@ export default {
 .error {
   color: red;
   text-align: center;
+}
+@media (max-width: 500px) {
+  .header {
+    span {
+      font-size: 20px;
+    }
+  }
 }
 </style>

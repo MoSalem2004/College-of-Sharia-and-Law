@@ -501,6 +501,7 @@ export default {
       }
     },
     DeleteBook() {
+      console.log(" DeleteBook()");
       let subject = this.Subject_Name;
       let TheClass = this.Class;
       let btn = document.querySelectorAll(" .body .box > svg");
@@ -683,7 +684,9 @@ export default {
           this.Books = doc.data().books;
         }
       });
-      this.DeleteBook();
+      setTimeout(() => {
+        this.DeleteBook();
+      }, 1000);
     },
     async Add_Book() {
       this.isClicked = true;
@@ -691,7 +694,7 @@ export default {
       let subject = this.Subject_Name;
       let TheClass = this.Class;
       let file = document.querySelector("#upload_file").files[0];
-      let isCleanDataCalled = false; // متغير للتحقق مما إذا تم استدعاء الدالة CleanData بالفعل
+      let isCleanDataCalled = false;
 
       if (
         file instanceof Blob &&
