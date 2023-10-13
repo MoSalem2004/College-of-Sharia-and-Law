@@ -42,6 +42,9 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: #fff;
+      padding: 10px;
+      border-radius: 5px;
       .facebook {
         display: flex;
         align-items: center;

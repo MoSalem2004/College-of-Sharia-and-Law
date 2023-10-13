@@ -1,10 +1,10 @@
 <template>
   <div class="Header">
     <div class="container fit">
-      <a class="logo" href="/">
+      <router-link class="logo" to="/">
         <img src="../../assets/main-logo.png" alt="" />
         <div>كلية الشريعة و القانون بالقاهرة</div>
-      </a>
+      </router-link>
       <div class="buttons">
         <a href="/#AllClasses">الفرق الدراسية</a>
         <a href="/#Conect">تابعنا</a>
