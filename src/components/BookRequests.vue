@@ -240,13 +240,15 @@ export default {
     },
     async UpdateData_0() {
       console.log("UpdateData_0");
-      let btn = document.querySelectorAll(".main_icon > svg:first-child");
+      let btn = document
+        .querySelectorAll(".Container_Form .content  ")[0]
+        .querySelectorAll(".main_icon > svg:first-child");
       //  document.querySelectorAll(".Container_Form .content")
       // .children[1].children[0].children[1].children[0]
       for (let i = 0; i < btn.length; i++) {
         btn[i].onclick = async () => {
           let deletebtn;
-
+          btn[i].parentElement.parentElement.classList.add("true");
           deletebtn = true;
           if (deletebtn) {
             const bookRef = doc(db, "طلبات كتب مجانية", this.Allclass[0]);
@@ -271,7 +273,9 @@ export default {
       }
     },
     async UpdateData_1() {
-      let btn = document.querySelectorAll(".main_icon > svg:first-child");
+      let btn = document
+        .querySelectorAll(".Container_Form .content  ")[1]
+        .querySelectorAll(".main_icon > svg:first-child");
       for (let i = 0; i < btn.length; i++) {
         btn[i].onclick = async () => {
           let deletebtn;
@@ -300,7 +304,9 @@ export default {
       }
     },
     async UpdateData_2() {
-      let btn = document.querySelectorAll(".main_icon > svg:first-child");
+      let btn = document
+        .querySelectorAll(".Container_Form .content  ")[2]
+        .querySelectorAll(".main_icon > svg:first-child");
       for (let i = 0; i < btn.length; i++) {
         btn[i].onclick = async () => {
           let deletebtn;
@@ -329,7 +335,9 @@ export default {
       }
     },
     async UpdateData_3() {
-      let btn = document.querySelectorAll(".main_icon > svg:first-child");
+      let btn = document
+        .querySelectorAll(".Container_Form .content  ")[3]
+        .querySelectorAll(".main_icon > svg:first-child");
       for (let i = 0; i < btn.length; i++) {
         btn[i].onclick = async () => {
           let deletebtn;
@@ -359,7 +367,9 @@ export default {
     },
     async DeleteData_0() {
       console.log("DeleteSummarie");
-      let btn = document.querySelectorAll(".main_icon > svg:last-child");
+      let btn = document
+        .querySelectorAll(".Container_Form .content  ")[0]
+        .querySelectorAll(".main_icon > svg:last-child");
       for (let i = 0; i < btn.length; i++) {
         btn[i].onclick = async () => {
           let deletebtn;
@@ -393,7 +403,9 @@ export default {
     },
     async DeleteData_1() {
       console.log("DeleteSummarie");
-      let btn = document.querySelectorAll(".main_icon > svg:last-child");
+      let btn = document
+        .querySelectorAll(".Container_Form .content  ")[1]
+        .querySelectorAll(".main_icon > svg:last-child");
       for (let i = 0; i < btn.length; i++) {
         btn[i].onclick = async () => {
           let deletebtn;
@@ -427,7 +439,9 @@ export default {
     },
     async DeleteData_2() {
       console.log("DeleteSummarie");
-      let btn = document.querySelectorAll(".main_icon > svg:last-child");
+      let btn = document
+        .querySelectorAll(".Container_Form .content  ")[2]
+        .querySelectorAll(".main_icon > svg:last-child");
       for (let i = 0; i < btn.length; i++) {
         btn[i].onclick = async () => {
           let deletebtn;
@@ -461,7 +475,9 @@ export default {
     },
     async DeleteData_3() {
       console.log("DeleteSummarie");
-      let btn = document.querySelectorAll(".main_icon > svg:last-child");
+      let btn = document
+        .querySelectorAll(".Container_Form .content  ")[3]
+        .querySelectorAll(".main_icon > svg:last-child");
       for (let i = 0; i < btn.length; i++) {
         btn[i].onclick = async () => {
           let deletebtn;

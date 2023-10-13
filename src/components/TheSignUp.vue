@@ -2,7 +2,7 @@
   <div class="main_popup" @click="closeModal"></div>
   <div class="Container_Form container">
     <header class="login">
-      <h1>إضافة الأدمين</h1>
+      <h1>إضافة المشرفين</h1>
       <font-awesome-icon :icon="['fas', 'window-close']" @click="closeModal" />
     </header>
     <form @submit="signUp">

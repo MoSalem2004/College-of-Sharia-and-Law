@@ -119,7 +119,7 @@ export default {
     this.GetData();
     setTimeout(() => {
       this.Counter();
-    }, 500);
+    }, 1000);
   },
 
   methods: {

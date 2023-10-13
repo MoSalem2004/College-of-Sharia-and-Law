@@ -3,7 +3,7 @@
     <div class="main_popup" @click="closeModal"></div>
     <div class="container Container_Form">
       <header class="login">
-        <h3>تسجيل دخول للأدمين</h3>
+        <h3>تسجيل دخول للمشرفين</h3>
         <font-awesome-icon
           :icon="['fas', 'window-close']"
           @click="closeModal"

@@ -68,7 +68,7 @@
     v-if="Show_msg"
   >
     <div class="toast-header">
-      <strong class="me-auto">أدمين الموقع</strong>
+      <strong class="me-auto">مشرف الموقع</strong>
       <small class="text-body-secondary">الآن</small>
       <button
         type="button"
@@ -116,7 +116,7 @@ export default {
   props: ["Class"],
   data() {
     return {
-      Show_msg: false,
+      Show_msg: true,
       msg: "تم إرسال بيناتك للمشرف , وعند الموافقة عليها سوف يتم عرضها ",
     };
   },
@@ -214,8 +214,8 @@ export default {
 }
 .toast {
   position: fixed;
-  bottom: 10%;
-  left: 50%;
+  bottom: 0;
+  left: 55%;
   transform: translate(-50%, -50%);
   z-index: 15;
   width: 90%;
@@ -223,12 +223,16 @@ export default {
 .me-auto {
   margin: 0 10px 0 auto !important;
   color: var(--main-color);
+  color: #35b635;
   font-size: 17px;
   font-weight: bold;
 }
 .toast-header .btn-close {
   margin-left: calc(-0.5 * var(--bs-toast-padding-x));
   margin-right: var(--bs-toast-padding-x);
+}
+.toast-body {
+  color: #35b635;
 }
 .MSG {
   background: #eee;

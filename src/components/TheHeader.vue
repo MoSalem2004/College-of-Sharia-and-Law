@@ -17,10 +17,10 @@
             <div class="email">{{ useremail }}</div>
             <div class="add" @click="close_modal_2">تغيير الباسوورد</div>
             <div class="add" v-show="Mosalem_Admin" @click="close_modal_3">
-              إضافة أدمين
+              إضافة المشرفين
             </div>
             <div class="add" v-show="Mosalem_Admin" @click="close_modal_4">
-              إدارة الأدمين
+              إدارة المشرفين
             </div>
             <div class="add" v-show="Mosalem_Admin" @click="close_modal_5">
               طلبات التبرع
