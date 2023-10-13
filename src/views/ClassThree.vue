@@ -9,7 +9,7 @@
           الفرقة الثالثة
         </li>
         <li class="breadcrumb-item order">
-          <router-link to="/"> الفرق الدراسية </router-link>
+          <a href="/#AllClasses"> الفرق الدراسية </a>
         </li>
       </ol>
     </nav>

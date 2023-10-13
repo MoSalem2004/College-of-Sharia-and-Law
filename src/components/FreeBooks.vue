@@ -27,13 +27,12 @@
     <div class="Content">
       <div
         class="box"
-        v-for="(ReportsArray, index) in Data[0]"
+        v-for="ReportsArray in Data[0]"
         :key="ReportsArray"
         v-show="ReportsArray.approval"
         :class="ReportsArray.approval ? '' : 'hidden'"
       >
         <div class="header">
-          <span class="count">{{ index + 1 }} </span>
           <span>
             {{ ReportsArray.name }}
           </span>
