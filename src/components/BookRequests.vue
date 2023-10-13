@@ -535,7 +535,7 @@ export default {
 .Container_Form {
   width: 90%;
   overflow: scroll;
-  height: 90vh;
+  height: 90vh !important;
 }
 .title {
   background: #eee;
@@ -595,8 +595,9 @@ export default {
 }
 .true {
   text-decoration: line-through;
-  background: #eee;
+  background: #fafafa;
   order: 1;
+  border-color: #3fbb3f !important;
   .main_icon > svg:first-child {
     background: #3fbb3f;
   }

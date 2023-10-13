@@ -142,6 +142,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
+  height: auto !important;
   header {
     display: flex;
     align-items: center;

@@ -47,7 +47,7 @@
             />
 
             <label for="number"
-              ><font-awesome-icon :icon="['fas', 'user-edit']" /> رقم تلفونك
+              ><font-awesome-icon :icon="['fas', 'phone']" /> رقم تلفونك
             </label>
           </div>
         </div>
