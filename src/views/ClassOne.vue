@@ -9,7 +9,7 @@
           الفرقة الأولي
         </li>
         <li class="breadcrumb-item order">
-          <a href="/#AllClasses"> الفرق الدراسية </a>
+          <router-link to="/">الفرق الدراسية</router-link>
         </li>
       </ol>
     </nav>

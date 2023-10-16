@@ -1,8 +1,18 @@
 <template>
   <div class="LandingPage">
-    <img src="../../assets/cloud.jpg" alt="" id="cloud_1" />
     <img src="../../assets/cloud.jpg" alt="" id="cloud" />
-    <img src="../../assets/الجامع-الازهر-الشريف-removebg-preview.png" alt="" />
+    <!-- <img src="../../assets/4a8babf8_o-removebg-preview.png" alt="" id="cloud" /> -->
+    <img src="../../assets/college_3-removebg.png" alt="" id="college" />
+    <!-- <img
+      src="../../assets/cover/b327b289_o__1_-removebg-preview.png"
+      alt=""
+      id="planting_1"
+    />
+    <img
+      src="../../assets/cover/2bff9900_o-removebg-preview.png"
+      alt=""
+      id="tree_1"
+    /> -->
   </div>
 </template>
 <script>
@@ -37,6 +47,14 @@ export default {
     left: 50%;
     transform: translate(-50%);
     width: 100%;
+    background-size: cover;
+    object-fit: cover;
+    vertical-align: middle;
+    &#college {
+      // top: 56%;
+      // height: 300px;
+      // width: 300px;
+    }
     &#cloud {
       left: 260px;
       width: 210%;

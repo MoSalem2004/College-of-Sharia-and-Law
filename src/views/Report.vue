@@ -44,8 +44,8 @@
         :key="ReportsArray"
       >
         <font-awesome-icon :icon="['fas', 'trash-alt']" v-show="Admin_State" />
-        <span
-          >تقرير الأسبوع رقم <span>{{ index + 1 }}</span></span
+        <span>
+          <span>{{ index + 1 }}</span></span
         >
         <div class="bottom">
           <button><a :href="ReportsArray.report"> تنزيل </a></button>
@@ -281,6 +281,7 @@ export default {
         span {
           color: var(--main-color);
           font-weight: bold;
+          padding: 5px;
         }
       }
       .size {

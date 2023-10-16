@@ -2,7 +2,7 @@
   <div class="content" id="Conect">
     <div class="container fit">
       <div class="Conect">
-        <span> تواصل معنا عبر</span>
+        <span> تابع الكلية عبر</span>
         <a
           href="https://www.facebook.com/profile.php?id=100083363979639"
           class="facebook"
@@ -13,13 +13,34 @@
       </div>
     </div>
     <!-- Copyright -->
-    <div class="text-center p-4 Copyright">
-      © 2024 Copyright:
-      <a
-        class="text-reset fw-bold"
-        href="https://www.facebook.com/profile.php?id=61551365201853"
-        >SALEM TEAM</a
-      >
+    <div class="text-center Copyright container fit">
+      <p>
+        <span>جميع الحقوق محفوظة &copy; 2024</span>
+        <a
+          class="text-reset fw-bold"
+          href="https://www.facebook.com/profile.php?id=61551365201853"
+          ><img
+            src="../../assets/SalemTeamLogo_2-removebg-preview.png"
+            alt=""
+            id="SalemTeam"
+          />
+        </a>
+      </p>
+      <div>
+        <p>
+          تصميم وتطوير بواسطة
+          <a href="https://www.facebook.com/profile.php?id=61551365201853">
+            <strong>محمد سالم</strong>
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://www.facebook.com/profile.php?id=61551365201853"
+            id="fac"
+            >قم يزيارة صفحتنا عبر الفيسبوك</a
+          >
+        </p>
+      </div>
     </div>
     <!-- Copyright -->
   </div>
@@ -34,40 +55,96 @@ export default {
   background-color: #eee;
   margin-top: auto;
   .container {
-    padding: 20px;
-    margin: 75px auto 0px;
-    display: flex;
-    .Conect {
-      width: 100%;
+    &:first-child {
+      padding: 20px;
+      margin: 75px auto 0px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fff;
-      padding: 10px;
-      border-radius: 5px;
-      .facebook {
+      .Conect {
+        width: 100%;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
-        background: #0866ff;
+        background: #fff;
         padding: 10px;
         border-radius: 5px;
-        color: #fff !important;
-        align-items: center;
-        svg {
-          //   color: var(--main-color);
+        .facebook {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          background: #0866ff;
+          padding: 10px;
+          border-radius: 5px;
+          color: #fff !important;
+          align-items: center;
+          svg {
+            //   color: var(--main-color);
+          }
         }
       }
     }
   }
   .Copyright {
-    padding: 20px;
-    text-align: center;
+    padding: 0px;
     border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column-reverse;
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border-top: 1px solid #dddd;
+      border-bottom: 1px solid #dddd;
+      gap: 10px;
+      align-items: center;
+    }
+    p {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 0;
+      &:first-child {
+        padding-bottom: 10px;
+      }
+    }
+    span {
+      display: flex;
+      align-items: end;
+    }
     a {
-      color: var(--main-color) !important;
+      position: relative;
+      #SalemTeam {
+        width: 100px;
+        // position: relative;
+        // transform: translate(-50%, -60%);
+        // left: 50%;
+        // top: 0;
+      }
+    }
+    strong {
       font-weight: bold;
+      color: var(--main-color);
+    }
+    #fac {
+      background: var(--main-color);
+      color: #fff !important;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .Copyright {
+    & > div {
+      flex-direction: column;
+      p:last-child {
+        width: 100%;
+        a {
+          width: 100%;
+        }
+      }
     }
   }
 }

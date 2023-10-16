@@ -4,6 +4,8 @@ import ClassOne from "../views/ClassOne.vue";
 import ClassTwo from "../views/ClassTwo.vue";
 import ClassThree from "../views/ClassThree.vue";
 import ClassFour from "../views/ClassFour.vue";
+import AllClasses from "../components/AllClasses.vue";
+import Conect from "../components/TheFooter.vue";
 
 const routes = [
   {
@@ -30,6 +32,16 @@ const routes = [
     path: "/ClassFour",
     name: "ClassFour",
     component: ClassFour,
+  },
+  {
+    path: "/AllClasses",
+    name: "#AllClasses",
+    component: AllClasses,
+  },
+  {
+    path: "/Conect",
+    name: "Conect",
+    component: Conect,
   },
 ];
 

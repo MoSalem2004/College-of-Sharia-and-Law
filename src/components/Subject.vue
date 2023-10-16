@@ -89,9 +89,39 @@
         >
       </div>
     </div>
+    <div class="input-group mb-3">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="RecordingsLink"
+          placeholder="لينك التسجيل"
+          required
+        />
+
+        <label for="RecordingsLink"
+          ><font-awesome-icon :icon="['fas', 'book']" /> لينك التسجيل</label
+        >
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="RecordingsSize"
+          placeholder="حجم التسجيل"
+          required
+        />
+
+        <label for="RecordingsSize"
+          ><font-awesome-icon :icon="['fas', 'book']" /> حجم التسجيل</label
+        >
+      </div>
+    </div>
     <div class="File_Name" id="File_Name_2"></div>
     <div class="File_Size" id="File_Size_2"></div>
-    <div class="Upload">
+    <!-- <div class="Upload">
       <label for="upload_file_2">أرفع التسجيل</label>
       <input
         type="file"
@@ -99,7 +129,7 @@
         style="display: none"
         @change="Add_Report_2"
       />
-    </div>
+    </div> -->
     <button class="done" @click="Add_Book_2" :disabled="isClicked_2">تم</button>
     <div class="progress" v-if="progress_2">
       <span class="Progress Progress_2"></span>
@@ -537,13 +567,13 @@ export default {
         };
       }
     },
-    Add_Report_2() {
-      let file = document.querySelector("#upload_file_2").files[0];
-      const filePath = file.name;
-      let size = `${(file.size / 1048576).toFixed(1)} MB`;
-      document.getElementById("File_Name_2").innerHTML = filePath;
-      document.getElementById("File_Size_2").innerHTML = size;
-    },
+    // Add_Report_2() {
+    // let file = document.querySelector("#upload_file_2").files[0];
+    // const filePath = file.name;
+    // let size = `${(file.size / 1048576).toFixed(1)} MB`;
+    // document.getElementById("File_Name_2").innerHTML = filePath;
+    // document.getElementById("File_Size_2").innerHTML = size;
+    // },
     Add_Report_1() {
       let file = document.querySelector("#upload_file_1").files[0];
       const filePath = file.name;
@@ -842,80 +872,82 @@ export default {
     },
     async Add_Book_2() {
       this.isClicked_2 = true;
-      let Progress;
+      // let Progress;
       let subject = this.Subject_Name;
       let TheClass = this.Class;
-      let file = document.querySelector("#upload_file_2").files[0];
+      // let file = document.querySelector("#upload_file_2").files[0];
       let isCleanDataCalled = false;
       let isCleanDataCalled_1 = false;
 
+      // file instanceof Blob &&
       if (
-        file instanceof Blob &&
-        document.getElementById("Recordings").value !== ""
+        document.getElementById("Recordings").value !== "" &&
+        document.getElementById("RecordingsLink").value !== "" &&
+        document.getElementById("RecordingsSize").value !== ""
       ) {
         this.progress_2 = true;
-        setTimeout(() => {
-          document.querySelector(".progress span.pro.pro_2").innerHTML =
-            " تم التحميل بنسبة " + 0 + "%";
-        }, 10);
-        const filePath = file.name;
-        const fileName = filePath.split("\\").pop();
-        const reader = new FileReader();
+        // setTimeout(() => {
+        //   document.querySelector(".progress span.pro.pro_2").innerHTML =
+        //     " تم التحميل بنسبة " + 0 + "%";
+        // }, 10);
+        // const filePath = file.name;
+        // const fileName = filePath.split("\\").pop();
+        // const reader = new FileReader();
 
-        reader.onload = async () => {
-          const storage = getStorage(app);
-          const storageRef = ref(storage, fileName);
+        // reader.onload = async () => {
+        // const storage = getStorage(app);
+        // const storageRef = ref(storage, fileName);
 
-          await uploadBytes(storageRef, file);
-          const downloadURL = await getDownloadURL(storageRef);
-          let size = `${(file.size / 1048576).toFixed(1)} MB`;
+        // await uploadBytes(storageRef, file);
+        // const downloadURL = await getDownloadURL(storageRef);
+        // let size = `${(file.size / 1048576).toFixed(1)} MB`;
 
-          const uploadTask = uploadBytesResumable(storageRef, file);
+        // const uploadTask = uploadBytesResumable(storageRef, file);
 
-          uploadTask.on("state_changed", async (snapshot) => {
-            Progress = (
-              (snapshot.bytesTransferred / snapshot.totalBytes) *
-              100
-            ).toFixed(1);
-            document.querySelector(".progress span.pro.pro_2").innerHTML =
-              " تم التحميل بنسبة  " + Progress + "%";
-            document.querySelector(
-              ".progress span.Progress.Progress_2"
-            ).style.width = ` ${Progress}%`;
+        // uploadTask.on("state_changed", async (snapshot) => {
+        // Progress = (
+        //   (snapshot.bytesTransferred / snapshot.totalBytes) *
+        //   100
+        // ).toFixed(1);
+        // document.querySelector(".progress span.pro.pro_2").innerHTML =
+        //   " تم التحميل بنسبة  " + Progress + "%";
+        // document.querySelector(
+        //   ".progress span.Progress.Progress_2"
+        // ).style.width = ` ${Progress}%`;
 
-            const bookRef = doc(db, `تسجيلات ${TheClass}`, subject);
-            const docSnap = await getDoc(bookRef);
-            if (!isCleanDataCalled) {
-              isCleanDataCalled = true;
-              let Object = {
-                BookName: document.getElementById("Recordings")?.value,
-                BookLink: downloadURL,
-                BookSize: size,
-                Time: new Date(),
-              };
+        const bookRef = doc(db, `تسجيلات ${TheClass}`, subject);
+        const docSnap = await getDoc(bookRef);
+        if (!isCleanDataCalled) {
+          isCleanDataCalled = true;
+          let Object = {
+            BookName: document.getElementById("Recordings")?.value,
+            BookLink: document.getElementById("RecordingsLink")?.value,
+            BookSize: document.getElementById("RecordingsSize")?.value,
+            Time: new Date(),
+          };
 
-              if (docSnap.data()?.books) {
-                const previousBooks = docSnap.data()?.books;
-                await updateDoc(bookRef, {
-                  books: arrayUnion(Object, ...previousBooks),
-                });
-              } else {
-                await setDoc(bookRef, {
-                  books: [Object],
-                });
-              }
+          if (docSnap.data()?.books) {
+            const previousBooks = docSnap.data()?.books;
+            await updateDoc(bookRef, {
+              books: arrayUnion(Object, ...previousBooks),
+            });
+          } else {
+            await setDoc(bookRef, {
+              books: [Object],
+            });
+          }
 
-              if (Progress === "100.0" && !isCleanDataCalled_1) {
-                isCleanDataCalled_1 = true;
-                setTimeout(() => {
-                  this.CleanData_2();
-                }, 1000);
-              }
-            }
-          });
-        };
+          if (!isCleanDataCalled_1) {
+            isCleanDataCalled_1 = true;
+            setTimeout(() => {
+              this.CleanData_2();
+            }, 1000);
+          }
+        }
+        // });
+        // };
 
-        reader.readAsDataURL(file);
+        // reader.readAsDataURL(file);
       }
     },
     CleanData_2() {

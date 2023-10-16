@@ -12,7 +12,7 @@
       </router-link>
       <router-link to="/ClassThree">
         <div class="title">الفرقة الثالثة</div>
-        <div class="Subject">13 مادة</div>
+        <div class="Subject">12 مادة</div>
       </router-link>
       <router-link to="/ClassFour">
         <div class="title">الفرقة الرابعة</div>
