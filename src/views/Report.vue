@@ -261,14 +261,14 @@ export default {
       width: 48%;
       display: flex;
       justify-content: space-between;
-      gap: 10px;
+      gap: 15px;
       border: 1px solid #ddd;
       padding: 10px;
       border-radius: 5px;
       flex-direction: column;
       position: relative;
       a {
-        color: #fff !important;
+        color: var(--main-color) !important;
       }
       & > svg {
         position: absolute;
@@ -278,8 +278,17 @@ export default {
       }
       span {
         font-size: 20px;
+        width: 30px;
+        background: var(--main-color);
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 5px;
         span {
-          color: var(--main-color);
+          color: #fff;
           font-weight: bold;
           padding: 5px;
         }
@@ -295,10 +304,12 @@ export default {
         button {
           border: none;
           padding: 5px 15px;
-          background: var(--main-color);
-          color: #fff;
+          background: #fff;
+          // color: #fff;
           border-radius: 5px;
           font-size: 14px;
+          font-weight: bold;
+          border: 1px solid var(--main-color);
         }
         .time {
           display: flex;
