@@ -47,7 +47,7 @@ export default {
     setTimeout(() => {
       setTimeout(() => {
         this.MoSalem();
-      }, 200);
+      }, 150);
       this.DeleteData();
     }, 1000);
   },

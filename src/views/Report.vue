@@ -8,8 +8,8 @@
           <li class="breadcrumb-item active" aria-current="page">
             التقارير الأسبوعية
           </li>
-          <li class="breadcrumb-item">{{ Class }}</li>
-          <li class="breadcrumb-item">
+          <li class="breadcrumb-item order">{{ Class }}</li>
+          <li class="breadcrumb-item order">
             <router-link to="/"> الفرق الدراسية </router-link>
           </li>
         </ol>

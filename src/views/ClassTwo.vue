@@ -8,7 +8,7 @@
         <li class="breadcrumb-item active" aria-current="page">
           الفرقة الثانية
         </li>
-        <li class="breadcrumb-item order">
+        <li class="breadcrumb-item">
           <a href="/#AllClasses"> الفرق الدراسية </a>
         </li>
       </ol>
@@ -50,9 +50,7 @@
         <div class="title">{{ subject.name }}</div>
         <div class="quran" v-if="subject.name === 'القرآن الكريم'">
           المقرر :
-          <div>
-            من آية رقم 36 ( سورة الأنعام ) إلي آية رقم 74 ( سورة الكهف )
-          </div>
+          <div>من آية رقم 36 (سورة الأنعام) إلي آية رقم 74 (سورة الكهف)</div>
         </div>
         <div class="type">{{ subject.type }}</div>
       </div>

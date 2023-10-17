@@ -40,9 +40,10 @@ body {
   font-family: system-ui;
 }
 .Container_Form {
-  width: 90%;
+  width: 90% !important;
   overflow: scroll;
   height: 90vh;
+  max-height: 90vh;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
