@@ -314,7 +314,7 @@ h2.main-title {
     }
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .MSG {
     font-size: 12px;
   }
