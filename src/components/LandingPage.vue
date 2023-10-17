@@ -1,5 +1,6 @@
 <template>
   <div class="LandingPage">
+    <img src="../../assets/cloud.jpg" alt="" id="cloud_1" />
     <img src="../../assets/cloud.jpg" alt="" id="cloud" />
     <!-- <img src="../../assets/4a8babf8_o-removebg-preview.png" alt="" id="cloud" /> -->
     <img
