@@ -48,6 +48,10 @@
       >
         <div class="count">{{ index + 1 }}</div>
         <div class="title">{{ subject.name }}</div>
+        <div class="quran" v-if="subject.name === 'القرآن الكريم'">
+          المقرر :
+          <div>من آية رقم 24 ( سورة سبأ ) إلي آية رقم 6 ( سورة الناس )</div>
+        </div>
         <div class="type">{{ subject.type }}</div>
       </div>
     </div>

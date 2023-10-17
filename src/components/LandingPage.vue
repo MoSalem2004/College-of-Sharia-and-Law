@@ -2,7 +2,11 @@
   <div class="LandingPage">
     <img src="../../assets/cloud.jpg" alt="" id="cloud" />
     <!-- <img src="../../assets/4a8babf8_o-removebg-preview.png" alt="" id="cloud" /> -->
-    <img src="../../assets/college_3-removebg.png" alt="" id="college" />
+    <img
+      src="../../assets/الجامع-الازهر-الشريف-removebg-preview.png"
+      alt=""
+      id="college"
+    />
     <!-- <img
       src="../../assets/cover/b327b289_o__1_-removebg-preview.png"
       alt=""

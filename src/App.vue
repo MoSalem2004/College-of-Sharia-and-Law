@@ -260,6 +260,17 @@ h2.main-title {
 .form-floating > .form-select ~ label {
   transform: scale(0.85) translateY(-0.5rem) translateX(10.5rem) !important;
 }
+.quran {
+  background: #fafafa;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #565656;
+  div {
+    font-size: 13px;
+  }
+}
 @media (min-width: 900px) and (max-width: 1067px) {
   .container.fit.In {
     .content {
@@ -296,7 +307,7 @@ h2.main-title {
     }
   }
 }
-@media (max-width: 263px) {
+@media (max-width: 400px) {
   h1 > span {
     font-size: 16px !important;
   }
@@ -308,7 +319,7 @@ h2.main-title {
     flex-direction: column-reverse;
   }
   .Header .container .logo div {
-    font-size: 11px !important;
+    font-size: 13px !important;
   }
   h1 {
     & > div {

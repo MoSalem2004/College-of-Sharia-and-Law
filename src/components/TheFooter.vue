@@ -37,7 +37,7 @@
           <a
             href="https://www.facebook.com/profile.php?id=61551365201853"
             id="fac"
-            >قم يزيارة صفحتنا عبر الفيسبوك</a
+            >قم بزيارة صفحتنا عبر الفيسبوك</a
           >
         </p>
       </div>
@@ -72,7 +72,7 @@ export default {
           align-items: center;
           justify-content: center;
           gap: 10px;
-          background: #0866ff;
+          background: var(--main-color);
           padding: 10px;
           border-radius: 5px;
           color: #fff !important;
@@ -85,20 +85,20 @@ export default {
     }
   }
   .Copyright {
-    padding: 0px;
-    border-top: 1px solid #ddd;
     display: flex;
     justify-content: center;
     gap: 10px;
     flex-direction: column-reverse;
+    padding: 0 20px 20px 20px;
     & > div {
       display: flex;
       justify-content: space-between;
       padding: 10px;
-      border-top: 1px solid #dddd;
-      border-bottom: 1px solid #dddd;
       gap: 10px;
       align-items: center;
+      padding: 10px;
+      background: #fff;
+      border-radius: 5px;
     }
     p {
       display: flex;

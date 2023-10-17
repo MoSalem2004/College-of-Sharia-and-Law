@@ -55,6 +55,12 @@
       >
         <div class="count">{{ index + 1 }}</div>
         <div class="title">{{ subject.name }}</div>
+        <div class="quran" v-if="subject.name === 'القرآن الكريم'">
+          المقرر :
+          <div>
+            من آية رقم 1 (سورة الفاتحة ) إلي آية رقم 35 ( سورة الأنعام )
+          </div>
+        </div>
         <div class="type">{{ subject.type }}</div>
       </div>
     </div>
@@ -151,6 +157,8 @@ export default {
         if (boxes[i].children[1].innerHTML === "القرآن الكريم") {
           boxes[i].classList.add("none");
         }
+        console.log(boxes[i].children[1].innerHTML === "القرآن الكريم");
+        return boxes[i].children[1].innerHTML === "القرآن الكريم";
       }
     },
     close_modal_2() {

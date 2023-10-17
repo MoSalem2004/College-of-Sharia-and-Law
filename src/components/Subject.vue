@@ -31,6 +31,7 @@
       />
     </div>
     <button class="done" @click="Add_Book()" :disabled="isClicked">تم</button>
+    <div class="main_msg" v-if="Mian_Msg">انتظر قليلاً</div>
     <div class="progress" v-if="progress">
       <span class="Progress"></span>
       <span class="pro"></span>
@@ -66,6 +67,7 @@
       />
     </div>
     <button class="done" @click="Add_Book_1" :disabled="isClicked_1">تم</button>
+    <div class="main_msg" v-if="Mian_Msg">انتظر قليلاً</div>
     <div class="progress">
       <span class="Progress Progress_1"></span>
       <span class="pro pro_1" v-if="progress_1"></span>
@@ -100,7 +102,8 @@
         />
 
         <label for="RecordingsLink"
-          ><font-awesome-icon :icon="['fas', 'book']" /> لينك التسجيل</label
+          ><font-awesome-icon :icon="['fas', 'book']" /> لينك التسجيل من جوجل
+          دريف</label
         >
       </div>
     </div>
@@ -115,7 +118,8 @@
         />
 
         <label for="RecordingsSize"
-          ><font-awesome-icon :icon="['fas', 'book']" /> حجم التسجيل</label
+          ><font-awesome-icon :icon="['fas', 'book']" /> حجم التسجيل من جوجل
+          دريف</label
         >
       </div>
     </div>
@@ -418,19 +422,20 @@ export default {
       DeleteState_1: null,
       DeleteState_2: null,
       DeleteState_3: null,
-      Summarie: "مثال : الباب الأول",
-      Recordings: "مثال :  تسجيل المحاضرة الأولي",
+      Summarie: "مثال : الباب الأول - د / محمد ",
+      Recordings: "مثال :  تسجيل المحاضرة الأولي - د / محمد ",
       isClicked: false,
       isClicked_1: false,
       isClicked_2: false,
       Main_Delete: null,
+      Mian_Msg: null,
     };
   },
   mounted() {
     this.showLoading = true;
     setInterval(() => {
       this.showLoading = false;
-    }, 2100);
+    }, 2500);
     setTimeout(() => {
       this.test();
       this.Get_Data_1();
@@ -444,7 +449,7 @@ export default {
       this.DeleteBook();
       this.DeleteSummarie();
       this.DeleteRecordings();
-    }, 3000);
+    }, 4000);
   },
   methods: {
     async DeleteRecordings() {
@@ -466,14 +471,12 @@ export default {
                   querySnapshot.forEach(async (doc) => {
                     if (doc.id === subject) {
                       const data = doc.data();
-                      console.log(data.books);
                       data.books.sort(
                         (a, b) => b.Time.toMillis() - a.Time.toMillis()
                       );
                       const newArray = data.books.filter(
                         (item, index) => index !== i
                       );
-                      console.log("تم حذف العنصر بنجاح");
                       await updateDoc(doc.ref, { books: newArray });
                       btn[i].parentElement.remove();
                     }
@@ -489,7 +492,6 @@ export default {
       }
     },
     async DeleteSummarie() {
-      console.log("DeleteSummarie");
       let subject = this.Subject_Name;
       let TheClass = this.Class;
       let btn = document.querySelectorAll(".feat_1 .body .box > svg");
@@ -508,14 +510,12 @@ export default {
                   querySnapshot.forEach(async (doc) => {
                     if (doc.id === subject) {
                       const data = doc.data();
-                      console.log(data.books);
                       data.books.sort(
                         (a, b) => b.Time.toMillis() - a.Time.toMillis()
                       );
                       const newArray = data.books.filter(
                         (item, index) => index !== i
                       );
-                      console.log("تم حذف العنصر بنجاح");
                       await updateDoc(doc.ref, { books: newArray });
                       btn[i].parentElement.remove();
                     }
@@ -531,7 +531,6 @@ export default {
       }
     },
     DeleteBook() {
-      console.log(" DeleteBook()");
       let subject = this.Subject_Name;
       let TheClass = this.Class;
       let btn = document.querySelectorAll(" .body .box > svg");
@@ -550,12 +549,10 @@ export default {
                   querySnapshot.forEach(async (doc) => {
                     if (doc.id === subject) {
                       const data = doc.data();
-                      console.log(data.books);
 
                       const newArray = data.books.filter(
                         (item, index) => index !== i
                       );
-                      console.log("تم حذف العنصر بنجاح");
                       await updateDoc(doc.ref, { books: newArray });
                       btn[i].parentElement.remove();
                     }
@@ -725,11 +722,11 @@ export default {
       let TheClass = this.Class;
       let file = document.querySelector("#upload_file").files[0];
       let isCleanDataCalled = false;
-
       if (
         file instanceof Blob &&
         document.getElementById("Book_Name").value !== ""
       ) {
+        this.Mian_Msg = true;
         this.progress = true;
 
         const filePath = file.name;
@@ -798,11 +795,11 @@ export default {
       let file = document.querySelector("#upload_file_1").files[0];
       let isCleanDataCalled = false;
       let isCleanDataCalled_1 = false;
-
       if (
         file instanceof Blob &&
         document.getElementById("Summarie").value !== ""
       ) {
+        this.Mian_Msg = true;
         this.progress_1 = true;
         setTimeout(() => {
           document.querySelector(".progress span.pro.pro_1").innerHTML =
@@ -872,48 +869,16 @@ export default {
     },
     async Add_Book_2() {
       this.isClicked_2 = true;
-      // let Progress;
       let subject = this.Subject_Name;
       let TheClass = this.Class;
-      // let file = document.querySelector("#upload_file_2").files[0];
       let isCleanDataCalled = false;
-      let isCleanDataCalled_1 = false;
-
-      // file instanceof Blob &&
+      // let isCleanDataCalled_1 = false;
       if (
         document.getElementById("Recordings").value !== "" &&
         document.getElementById("RecordingsLink").value !== "" &&
         document.getElementById("RecordingsSize").value !== ""
       ) {
         this.progress_2 = true;
-        // setTimeout(() => {
-        //   document.querySelector(".progress span.pro.pro_2").innerHTML =
-        //     " تم التحميل بنسبة " + 0 + "%";
-        // }, 10);
-        // const filePath = file.name;
-        // const fileName = filePath.split("\\").pop();
-        // const reader = new FileReader();
-
-        // reader.onload = async () => {
-        // const storage = getStorage(app);
-        // const storageRef = ref(storage, fileName);
-
-        // await uploadBytes(storageRef, file);
-        // const downloadURL = await getDownloadURL(storageRef);
-        // let size = `${(file.size / 1048576).toFixed(1)} MB`;
-
-        // const uploadTask = uploadBytesResumable(storageRef, file);
-
-        // uploadTask.on("state_changed", async (snapshot) => {
-        // Progress = (
-        //   (snapshot.bytesTransferred / snapshot.totalBytes) *
-        //   100
-        // ).toFixed(1);
-        // document.querySelector(".progress span.pro.pro_2").innerHTML =
-        //   " تم التحميل بنسبة  " + Progress + "%";
-        // document.querySelector(
-        //   ".progress span.Progress.Progress_2"
-        // ).style.width = ` ${Progress}%`;
 
         const bookRef = doc(db, `تسجيلات ${TheClass}`, subject);
         const docSnap = await getDoc(bookRef);
@@ -937,22 +902,17 @@ export default {
             });
           }
 
-          if (!isCleanDataCalled_1) {
-            isCleanDataCalled_1 = true;
-            setTimeout(() => {
-              this.CleanData_2();
-            }, 1000);
-          }
+          // if (!isCleanDataCalled_1) {
+          // isCleanDataCalled_1 = true;
+          setTimeout(() => {
+            this.CleanData_2();
+          }, 1000);
+          // }
         }
-        // });
-        // };
-
-        // reader.readAsDataURL(file);
       }
     },
     CleanData_2() {
       this.Recordings = "";
-
       this.isClicked_2 = false;
       setTimeout(() => {
         this.Get_Data_2();
@@ -966,6 +926,8 @@ export default {
     CleanData_1() {
       this.Summarie = "";
       this.isClicked_1 = false;
+      this.Mian_Msg = false;
+
       setTimeout(() => {
         this.Get_Data_1();
         this.Show_Add_1 = false;
@@ -977,8 +939,8 @@ export default {
     },
     CleanData() {
       this.Book_Name = "";
-
       this.isClicked = false;
+      this.Mian_Msg = false;
       setTimeout(() => {
         this.Get_Data();
         this.Show_Add = false;
@@ -1233,6 +1195,13 @@ export default {
       }
     }
   }
+}
+.main_msg {
+  background: #fafafa;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 @media (max-width: 500px) {
   .feat .Head {
