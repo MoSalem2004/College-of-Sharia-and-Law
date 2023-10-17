@@ -116,6 +116,7 @@ h2.main-title {
 .container.fit.In {
   margin: 30px auto 2px;
   position: relative;
+  overflow: auto;
   nav {
     border-radius: 5px;
     padding: 10px 20px;
@@ -309,6 +310,10 @@ h2.main-title {
   }
 }
 @media (max-width: 400px) {
+  .content .Copyright p {
+    flex-direction: column;
+    align-items: center;
+  }
   h1 > span {
     font-size: 16px !important;
   }

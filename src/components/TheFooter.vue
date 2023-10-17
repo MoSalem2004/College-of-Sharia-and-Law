@@ -77,9 +77,7 @@ export default {
           border-radius: 5px;
           color: #fff !important;
           align-items: center;
-          svg {
-            //   color: var(--main-color);
-          }
+          width: 100%;
         }
       }
     }
@@ -103,7 +101,7 @@ export default {
     p {
       display: flex;
       gap: 10px;
-      justify-content: center;
+      justify-content: space-between;
       margin: 0;
       &:first-child {
         padding-bottom: 10px;
