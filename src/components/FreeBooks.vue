@@ -1,6 +1,6 @@
 <template>
   <div class="main_popup" @click="closeModal"></div>
-  <div class="container fit In popup">
+  <div class="container fit In popup" style="overflow: initial">
     <AddFreeBooks
       v-if="ShowAddFreeBooks"
       @close_AddFreeBooks="close_AddFreeBooks"
@@ -118,7 +118,7 @@ export default {
     this.GetData();
     setTimeout(() => {
       this.Counter();
-    }, 1000);
+    }, 1100);
   },
 
   methods: {

@@ -276,7 +276,7 @@ export default {
         color: var(--main-color);
         cursor: pointer;
       }
-      span {
+      & > span {
         font-size: 20px;
         width: 30px;
         background: var(--main-color);

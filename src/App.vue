@@ -38,8 +38,6 @@ export default {
 body {
   direction: rtl;
   font-family: system-ui;
-  // display: flex;
-  // justify-content: space-between;
 }
 .Container_Form {
   width: 90%;
@@ -111,6 +109,12 @@ h2.main-title {
   &:hover {
     background: var(--main-color);
     color: #ffff;
+  }
+}
+.box .header {
+  & > span {
+    color: var(--main-color);
+    font-weight: bold;
   }
 }
 .container.fit.In {
@@ -197,6 +201,7 @@ h2.main-title {
       gap: 10px;
       transition: 0.3s;
       position: relative;
+
       &.none {
         pointer-events: none;
       }
@@ -310,6 +315,12 @@ h2.main-title {
   }
 }
 @media (max-width: 400px) {
+  .MSG {
+    font-size: 12px;
+  }
+  .box .body .btn span {
+    display: none;
+  }
   .content .Copyright p {
     flex-direction: column;
     align-items: center;

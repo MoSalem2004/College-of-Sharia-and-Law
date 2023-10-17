@@ -2,14 +2,18 @@
   <div class="content" id="Conect">
     <div class="container fit">
       <div class="Conect">
-        <span> تابع الكلية عبر</span>
-        <a
-          href="https://www.facebook.com/profile.php?id=100083363979639"
-          class="facebook"
-        >
-          <font-awesome-icon :icon="['fab', 'facebook']" />
-          <span>الفيس بوك</span>
-        </a>
+        <div>
+          <span> تابع الكلية عبر</span>
+        </div>
+        <div>
+          <a
+            href="https://www.facebook.com/profile.php?id=100083363979639"
+            class="facebook"
+          >
+            <font-awesome-icon :icon="['fab', 'facebook']" />
+            <span>الفيس بوك</span>
+          </a>
+        </div>
       </div>
     </div>
     <!-- Copyright -->
@@ -67,6 +71,7 @@ export default {
         background: #fff;
         padding: 10px;
         border-radius: 5px;
+
         .facebook {
           display: flex;
           align-items: center;
@@ -77,7 +82,6 @@ export default {
           border-radius: 5px;
           color: #fff !important;
           align-items: center;
-          width: 100%;
         }
       }
     }
@@ -134,6 +138,11 @@ export default {
   }
 }
 @media (max-width: 500px) {
+  .Conect {
+    > div:last-child {
+      width: 100%;
+    }
+  }
   .Copyright {
     & > div {
       flex-direction: column;
