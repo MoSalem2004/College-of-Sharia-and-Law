@@ -66,6 +66,7 @@ export default {
         if (e.innerHTML === "mas2022mas2004@gmail.com") {
           e.parentElement.parentElement.children[1].classList.add("hidden");
           e.parentElement.parentElement.classList.add("none");
+          e.parentElement.parentElement.style.order = -1;
         }
       });
     },
