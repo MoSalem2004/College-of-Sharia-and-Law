@@ -185,6 +185,7 @@ h2.main-title {
     justify-content: flex-start;
     gap: 13px;
     .box {
+      justify-content: space-between;
       width: 32.4%;
       padding: 10px;
       border-radius: 5px;
