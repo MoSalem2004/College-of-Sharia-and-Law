@@ -8,7 +8,7 @@
         <li class="breadcrumb-item active" aria-current="page">
           الفرقة الأولي
         </li>
-        <li class="breadcrumb-item order">
+        <li class="breadcrumb-item">
           <a href="/#AllClasses"> الفرق الدراسية </a>
         </li>
       </ol>

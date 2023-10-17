@@ -250,6 +250,7 @@ h2.main-title {
 .none {
   pointer-events: none;
 }
+
 .hidden {
   opacity: 0;
   height: 0;
@@ -328,7 +329,7 @@ h2.main-title {
   h1 > span {
     font-size: 16px !important;
   }
-  .breadcrumb-item + .breadcrumb-item {
+  .breadcrumb-item.order:not(.active) {
     order: -1 !important;
     display: none;
   }
