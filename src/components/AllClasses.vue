@@ -2,7 +2,7 @@
   <div id="AllClasses">
     <h2 class="main-title">الفرق الدراسية</h2>
     <div class="container fit">
-      <router-link :to="{ name: 'ClassOne' }">
+      <router-link to="/ClassOne">
         <div class="title">الفرقة الأولي</div>
         <div class="Subject">12 مادة</div>
       </router-link>

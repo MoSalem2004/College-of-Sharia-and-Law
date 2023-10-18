@@ -27,6 +27,7 @@
             src="../../assets/SalemTeamLogo_2-removebg-preview.webp"
             alt=""
             id="SalemTeam"
+            style="height: 60px"
           />
         </a>
       </p>
@@ -117,13 +118,6 @@ export default {
     }
     a {
       position: relative;
-      #SalemTeam {
-        width: 100px;
-        // position: relative;
-        // transform: translate(-50%, -60%);
-        // left: 50%;
-        // top: 0;
-      }
     }
     strong {
       font-weight: bold;

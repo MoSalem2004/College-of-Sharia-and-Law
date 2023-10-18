@@ -100,7 +100,6 @@ h2.main-title {
   cursor: pointer;
   font-size: 14px !important;
   width: fit-content;
-  // border: 1px solid var(--main-color);
   transition: 0.3s;
   position: absolute;
   top: 50%;
@@ -236,7 +235,6 @@ h2.main-title {
       .title {
         text-align: center;
         font-size: 20px;
-        // font-family: inherit;
       }
       .type {
         text-align: left;
@@ -363,8 +361,6 @@ h2.main-title {
       text-align: right;
     }
   }
-}
-@media (max-width: 500px) {
   .container.fit.In .breadcrumb-item.active {
     color: var(--main-color);
     font-size: 17px;
@@ -380,7 +376,6 @@ h2.main-title {
   }
   .breadcrumb-item + .breadcrumb-item {
     order: -1 !important;
-    // display: none;
   }
   .container.fit.In.popup header {
     flex-direction: column-reverse;
@@ -412,10 +407,6 @@ h2.main-title {
       font-size: 21px;
     }
   }
-  // .container.fit.In h1 > div {
-  //   font-size: 13px;
-  //   text-align: center;
-  // }
   .order {
     order: -1;
   }
