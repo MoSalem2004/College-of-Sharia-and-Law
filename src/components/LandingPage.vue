@@ -1,10 +1,10 @@
 <template>
   <div class="LandingPage">
-    <img src="../../assets/cloud.jpg" alt="" id="cloud_1" />
-    <img src="../../assets/cloud.jpg" alt="" id="cloud" />
+    <img src="../../assets/cloud.webp" alt="" id="cloud_1" />
+    <img src="../../assets/cloud.webp" alt="" id="cloud" />
     <!-- <img src="../../assets/4a8babf8_o-removebg-preview.png" alt="" id="cloud" /> -->
     <img
-      src="../../assets/الجامع-الازهر-الشريف-removebg-preview.png"
+      src="../../assets/الجامع-الازهر-الشريف-removebg-preview.webp"
       alt=""
       id="college"
     />
