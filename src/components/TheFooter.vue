@@ -24,8 +24,8 @@
           class="text-reset fw-bold"
           href="https://www.facebook.com/profile.php?id=61551365201853"
           ><img
-            src="../../assets/SalemTeamLogo_2-removebg-preview.webp"
-            alt=""
+            :src="img"
+            alt="SalemTeam"
             id="SalemTeam"
             style="height: 60px"
           />
@@ -53,6 +53,11 @@
 <script>
 export default {
   name: "TheFooter",
+  data() {
+    return {
+      img: "/assets/SalemTeamLogo_2-removebg-preview.webp",
+    };
+  },
 };
 </script>
 <style lang="scss" scoped>
