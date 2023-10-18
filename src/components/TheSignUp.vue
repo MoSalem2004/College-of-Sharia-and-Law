@@ -100,6 +100,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+import bcrypt from "bcryptjs";
 export default {
   name: "TheSignUp",
   emits: {
@@ -112,7 +113,7 @@ export default {
       password: this.generateRandomString(),
       signUpError: "",
       selectedValue: "",
-
+      hashedPassword: "",
       showPassword: false,
       options: [
         "",
@@ -134,7 +135,6 @@ export default {
         const randomIndex = Math.floor(Math.random() * characters.length);
         result += characters.charAt(randomIndex);
       }
-
       return result;
     },
     closeModal() {
@@ -145,7 +145,9 @@ export default {
     },
     async signUp(event) {
       event.preventDefault();
-
+      const salt = bcrypt.genSaltSync(10); // توليد الملح (salt)
+      const hashedPassword = bcrypt.hashSync(this.password, salt); // تجزئة كلمة المرور
+      this.password = hashedPassword;
       await addDoc(collection(db, "Admins"), {
         name: this.name,
         email: this.email,

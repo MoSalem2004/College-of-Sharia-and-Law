@@ -3,7 +3,7 @@
     <div class="main_popup" @click="closeModal"></div>
     <div class="container Container_Form">
       <header class="login">
-        <h3>تسجيل دخول للمشرفين</h3>
+        <h3>تسجيل دخول للمشرفين فقط</h3>
         <font-awesome-icon
           :icon="['fas', 'window-close']"
           @click="closeModal"
@@ -47,7 +47,7 @@
             </div>
           </div>
         </div>
-        <p v-if="loginError" class="error">{{ loginError }}</p>
+        <p class="error">{{ loginError }}</p>
         <button type="submit">تسجيل دخول</button>
       </form>
     </div>
@@ -75,7 +75,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
+import bcrypt from "bcryptjs";
 export default {
   name: "TheLogin",
   data() {
@@ -98,30 +98,59 @@ export default {
     },
     async login() {
       event.preventDefault();
+      // try {
+      // const salt = bcrypt.genSaltSync(10); // توليد الملح (salt)
+      // const hashedPassword = bcrypt.hashSync(this.password, salt); // تجزئة كلمة المرور
+      // this.password = hashedPassword;
+      // console.log(hashedPassword);
+      // const q = query(
+      //   collection(db, "Admins"),
+      //   where("email", "==", this.email),
+      //   where("password", "==", this.password)
+      // );
       try {
         const q = query(
           collection(db, "Admins"),
-          where("email", "==", this.email),
-          where("password", "==", this.password)
+          where("email", "==", this.email)
         );
-        const response = await getDocs(q);
-        if (response.docs.length > 0) {
-          const user = response.docs[0].data();
-          this.username = user.name;
-          this.useremail = user.email;
+        //
+        // amamr13317@gmail.com  - عمار ياسر
+        // badrhossam702@gmail.com -بدر حسام
+        // hsanrmdanaltlhwyh@gmail.com -حسان رمضان
+        // sasaasd1997@gmail.com-يوسف أحمد
+        // Okhalifa439@gmail.com -عمر محمد
+        // taabdelal666@gmail.com -طه عبدالعال
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          const admin = doc.data();
+          const isPasswordCorrect = bcrypt.compareSync(
+            this.password,
+            admin.password
+          );
 
-          localStorage.setItem("username", user.name);
-          localStorage.setItem("useremail", user.email);
-          localStorage.setItem("userid", response.docs[0].id);
-          localStorage.setItem("userclass", user.class);
-          this.loginError = "";
-          this.email = "";
-          this.password = "";
-          this.$emit("close_modal");
-          window.location.reload();
-        } else {
-          this.loginError = "بيانات تسجيل الدخول غير صحيحة!";
-        }
+          if (isPasswordCorrect) {
+            console.log("تم تسجيل الدخول بنجاح!");
+
+            if (querySnapshot.docs.length > 0) {
+              const user = querySnapshot.docs[0].data();
+              this.username = user.name;
+              this.useremail = user.email;
+
+              localStorage.setItem("username", user.name);
+              localStorage.setItem("useremail", user.email);
+              localStorage.setItem("userid", querySnapshot.docs[0].id);
+              localStorage.setItem("userclass", user.class);
+              this.loginError = "";
+              this.email = "";
+              this.password = "";
+              this.$emit("close_modal");
+              // window.location.reload();
+            }
+          } else {
+            this.loginError = "بيانات تسجيل الدخول غير صحيحة !";
+            console.log("كلمة المرور غير صحيحة!");
+          }
+        });
       } catch (error) {
         this.loginError = "حدث خطأ أثناء تسجيل الدخول!";
       }

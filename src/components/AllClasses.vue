@@ -16,7 +16,7 @@
       </router-link>
       <router-link to="/ClassFour">
         <div class="title">الفرقة الرابعة</div>
-        <div class="Subject">18 مادة</div>
+        <div class="Subject">17 مادة</div>
       </router-link>
     </div>
   </div>

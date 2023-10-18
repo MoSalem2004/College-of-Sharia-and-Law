@@ -3,7 +3,7 @@
     <div class="container fit">
       <router-link class="logo" to="/">
         <img src="../../assets/main-logo.png" alt="" />
-        <div>كلية الشريعة و القانون بالقاهرة</div>
+        <div>أبناء كلية الشريعة و القانون بالقاهرة</div>
       </router-link>
       <div class="buttons">
         <a href="/#AllClasses">الفرق الدراسية</a>
@@ -73,6 +73,7 @@ export default {
       modalActive_5: null,
       username: "",
       useremail: "",
+      userclass: "",
       UserState: null,
       firstLetters: "",
       state: null,
@@ -90,8 +91,9 @@ export default {
       this.UserState = true;
       this.username = localStorage.getItem("username");
       this.useremail = localStorage.getItem("useremail");
+      this.userclass = localStorage.getItem("userclass");
 
-      this.useremail === "mas2022mas2004@gmail.com"
+      this.userclass === "الكل"
         ? (this.Mosalem_Admin = true)
         : (this.Mosalem_Admin = false);
       if (this.username) {
@@ -131,7 +133,7 @@ export default {
       this.UserState = false;
       this.state = !this.state;
       this.userstate();
-      window.location.reload();
+      // window.location.reload();
       if (
         localStorage.getItem("userclass") ===
           document.querySelector("h1 span").innerHTML ||

@@ -30,7 +30,6 @@
             </div>
           </div>
         </div>
-        <p v-if="loginError" class="error">{{ loginError }}</p>
         <button type="submit">تغيير الباسوورد</button>
       </form>
     </div>
@@ -51,8 +50,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+import bcrypt from "bcryptjs";
 export default {
   name: "ChangePassword",
+  emits: ["close_modal_2"],
   data() {
     return {
       password: "",
@@ -66,6 +67,9 @@ export default {
     async UpdateData(event) {
       event.preventDefault();
       const washingtonRef = doc(db, "Admins", localStorage.getItem("userid"));
+      const salt = bcrypt.genSaltSync(10); // توليد الملح (salt)
+      const hashedPassword = bcrypt.hashSync(this.password, salt); // تجزئة كلمة المرور
+      this.password = hashedPassword;
       await updateDoc(washingtonRef, {
         password: this.password,
       });

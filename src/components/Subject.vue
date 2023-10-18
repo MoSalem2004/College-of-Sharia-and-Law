@@ -728,7 +728,10 @@ export default {
       ) {
         this.Mian_Msg = true;
         this.progress = true;
-
+        setTimeout(() => {
+          document.querySelector(".progress span.pro").innerHTML =
+            " تم التحميل بنسبة " + 0 + "%";
+        }, 10);
         const filePath = file.name;
         const fileName = filePath.split("\\").pop();
         const reader = new FileReader();
