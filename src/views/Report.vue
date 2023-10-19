@@ -340,7 +340,7 @@ export default {
     }
   }
 }
-@media (min-width: 500px) and (max-width: 600px) {
+@media (min-width: 500px) and (max-width: 767px) {
   header:not(.login) {
     flex-direction: column-reverse;
     nav {
