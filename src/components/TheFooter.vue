@@ -3,7 +3,7 @@
     <div class="container fit">
       <div class="Conect">
         <div>
-          <span> تابع الكلية عبر</span>
+          <span>تابع الكلية عبر</span>
         </div>
         <div>
           <a
@@ -114,7 +114,7 @@ export default {
     }
     span {
       display: flex;
-      align-items: end;
+      align-items: flex-end;
     }
     a {
       position: relative;

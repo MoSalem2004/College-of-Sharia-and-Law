@@ -155,7 +155,6 @@ export default {
         if (boxes[i].children[1].innerHTML === "القرآن الكريم") {
           boxes[i].classList.add("none");
         }
-        console.log(boxes[i].children[1].innerHTML === "القرآن الكريم");
         return boxes[i].children[1].innerHTML === "القرآن الكريم";
       }
     },

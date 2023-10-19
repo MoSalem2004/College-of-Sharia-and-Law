@@ -98,28 +98,11 @@ export default {
     },
     async login() {
       event.preventDefault();
-      // try {
-      // const salt = bcrypt.genSaltSync(10); // توليد الملح (salt)
-      // const hashedPassword = bcrypt.hashSync(this.password, salt); // تجزئة كلمة المرور
-      // this.password = hashedPassword;
-      // console.log(hashedPassword);
-      // const q = query(
-      //   collection(db, "Admins"),
-      //   where("email", "==", this.email),
-      //   where("password", "==", this.password)
-      // );
       try {
         const q = query(
           collection(db, "Admins"),
           where("email", "==", this.email)
         );
-        //
-        // amamr13317@gmail.com  - عمار ياسر
-        // badrhossam702@gmail.com -بدر حسام
-        // hsanrmdanaltlhwyh@gmail.com -حسان رمضان
-        // sasaasd1997@gmail.com-يوسف أحمد
-        // Okhalifa439@gmail.com -عمر محمد
-        // taabdelal666@gmail.com -طه عبدالعال
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
           const admin = doc.data();
@@ -129,8 +112,6 @@ export default {
           );
 
           if (isPasswordCorrect) {
-            console.log("تم تسجيل الدخول بنجاح!");
-
             if (querySnapshot.docs.length > 0) {
               const user = querySnapshot.docs[0].data();
               this.username = user.name;
@@ -144,11 +125,9 @@ export default {
               this.email = "";
               this.password = "";
               this.$emit("close_modal");
-              // window.location.reload();
             }
           } else {
             this.loginError = "بيانات تسجيل الدخول غير صحيحة !";
-            console.log("كلمة المرور غير صحيحة!");
           }
         });
       } catch (error) {

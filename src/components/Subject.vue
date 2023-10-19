@@ -1,6 +1,4 @@
 <template>
-  <div>Subject</div>
-
   <div class="Add_Book" v-if="Show_Add">
     <font-awesome-icon :icon="['fas', 'window-close']" @click="closeModal_1" />
     <div class="input-group mb-3">
@@ -8,34 +6,54 @@
         <input
           type="text"
           class="form-control"
-          id="Book_Name"
+          id="TheBook"
           placeholder="اسم الكتاب"
-          v-model="Book_Name"
+          v-model="TheBook"
           required
         />
 
-        <label for="Book_Name"
+        <label for="TheBook"
           ><font-awesome-icon :icon="['fas', 'book']" /> اسم الكتاب</label
+        >
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="BookLink"
+          placeholder="لينك الكتاب"
+          required
+        />
+
+        <label for="BookLink"
+          ><font-awesome-icon :icon="['fas', 'book']" /> لينك الكتاب من جوجل
+          دريف</label
+        >
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="BookSize"
+          placeholder="حجم الكتاب"
+          required
+        />
+
+        <label for="BookSize"
+          ><font-awesome-icon :icon="['fas', 'book']" /> حجم الكتاب من جوجل
+          دريف</label
         >
       </div>
     </div>
     <div class="File_Name" id="File_Name"></div>
     <div class="File_Size" id="File_Size"></div>
-    <div class="Upload">
-      <label for="upload_file">أرفع الكتاب</label>
-      <input
-        type="file"
-        id="upload_file"
-        style="display: none"
-        @change="Add_Report"
-      />
-    </div>
-    <button class="done" @click="Add_Book()" :disabled="isClicked">تم</button>
-    <div class="main_msg" v-if="Mian_Msg">انتظر قليلاً</div>
-    <div class="progress" v-if="progress">
-      <span class="Progress"></span>
-      <span class="pro"></span>
-    </div>
+
+    <button class="done" @click="Add_Book" :disabled="isClicked">تم</button>
   </div>
   <div class="Add_Book" v-if="Show_Add_1">
     <font-awesome-icon :icon="['fas', 'window-close']" @click="closeModal_2" />
@@ -44,34 +62,54 @@
         <input
           type="text"
           class="form-control"
-          id="Summarie"
+          id="SummarieBook"
           placeholder="اسم الملخص"
-          v-model="Summarie"
+          v-model="SummarieBook"
           required
         />
 
-        <label for="Summarie"
+        <label for="SummarieBook"
           ><font-awesome-icon :icon="['fas', 'book']" /> اسم الملخص</label
+        >
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="SummarieLink"
+          placeholder="لينك الملخص"
+          required
+        />
+
+        <label for="SummarieLink"
+          ><font-awesome-icon :icon="['fas', 'book']" /> لينك الملخص من جوجل
+          دريف</label
+        >
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="SummarieSize"
+          placeholder="حجم الملخص"
+          required
+        />
+
+        <label for="SummarieSize"
+          ><font-awesome-icon :icon="['fas', 'book']" /> حجم الملخص من جوجل
+          دريف</label
         >
       </div>
     </div>
     <div class="File_Name" id="File_Name_1"></div>
     <div class="File_Size" id="File_Size_1"></div>
-    <div class="Upload">
-      <label for="upload_file_1">أرفع الملخص</label>
-      <input
-        type="file"
-        id="upload_file_1"
-        style="display: none"
-        @change="Add_Report_1"
-      />
-    </div>
+
     <button class="done" @click="Add_Book_1" :disabled="isClicked_1">تم</button>
-    <div class="main_msg" v-if="Mian_Msg">انتظر قليلاً</div>
-    <div class="progress">
-      <span class="Progress Progress_1"></span>
-      <span class="pro pro_1" v-if="progress_1"></span>
-    </div>
   </div>
   <div class="Add_Book" v-if="Show_Add_2">
     <font-awesome-icon :icon="['fas', 'window-close']" @click="closeModal_3" />
@@ -125,15 +163,7 @@
     </div>
     <div class="File_Name" id="File_Name_2"></div>
     <div class="File_Size" id="File_Size_2"></div>
-    <!-- <div class="Upload">
-      <label for="upload_file_2">أرفع التسجيل</label>
-      <input
-        type="file"
-        id="upload_file_2"
-        style="display: none"
-        @change="Add_Report_2"
-      />
-    </div> -->
+
     <button class="done" @click="Add_Book_2" :disabled="isClicked_2">تم</button>
     <div class="progress" v-if="progress_2">
       <span class="Progress Progress_2"></span>
@@ -368,15 +398,15 @@ import {
   arrayUnion,
   //   serverTimestamp,
 } from "firebase/firestore";
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  uploadBytesResumable,
-  //   deleteObject,
-  //   listAll,
-} from "firebase/storage";
+// import {
+// getStorage,
+// ref,
+// uploadBytes,
+// getDownloadURL,
+// uploadBytesResumable,
+//   deleteObject,
+//   listAll,
+// } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -571,20 +601,20 @@ export default {
     // document.getElementById("File_Name_2").innerHTML = filePath;
     // document.getElementById("File_Size_2").innerHTML = size;
     // },
-    Add_Report_1() {
-      let file = document.querySelector("#upload_file_1").files[0];
-      const filePath = file.name;
-      let size = `${(file.size / 1048576).toFixed(1)} MB`;
-      document.getElementById("File_Name_1").innerHTML = filePath;
-      document.getElementById("File_Size_1").innerHTML = size;
-    },
-    Add_Report() {
-      let file = document.querySelector("#upload_file").files[0];
-      const filePath = file.name;
-      let size = `${(file.size / 1048576).toFixed(1)} MB`;
-      document.getElementById("File_Name").innerHTML = filePath;
-      document.getElementById("File_Size").innerHTML = size;
-    },
+    // Add_Report_1() {
+    //   let file = document.querySelector("#upload_file_1").files[0];
+    //   const filePath = file.name;
+    //   let size = `${(file.size / 1048576).toFixed(1)} MB`;
+    //   document.getElementById("File_Name_1").innerHTML = filePath;
+    //   document.getElementById("File_Size_1").innerHTML = size;
+    // },
+    // Add_Report() {
+    //   let file = document.querySelector("#upload_file").files[0];
+    //   const filePath = file.name;
+    //   let size = `${(file.size / 1048576).toFixed(1)} MB`;
+    //   document.getElementById("File_Name").innerHTML = filePath;
+    //   document.getElementById("File_Size").innerHTML = size;
+    // },
     Main_Delete_Function() {
       this.Main_Delete = !this.Main_Delete;
     },
@@ -717,157 +747,76 @@ export default {
     },
     async Add_Book() {
       this.isClicked = true;
-      let Progress;
       let subject = this.Subject_Name;
       let TheClass = this.Class;
-      let file = document.querySelector("#upload_file").files[0];
       let isCleanDataCalled = false;
       if (
-        file instanceof Blob &&
-        document.getElementById("Book_Name").value !== ""
+        document.getElementById("TheBook").value !== "" &&
+        document.getElementById("BookLink").value !== "" &&
+        document.getElementById("BookSize").value !== ""
       ) {
-        this.Mian_Msg = true;
-        this.progress = true;
-        setTimeout(() => {
-          document.querySelector(".progress span.pro").innerHTML =
-            " تم التحميل بنسبة " + 0 + "%";
-        }, 10);
-        const filePath = file.name;
-        const fileName = filePath.split("\\").pop();
-        const reader = new FileReader();
+        const bookRef = doc(db, `كتب ${TheClass}`, subject);
+        const docSnap = await getDoc(bookRef);
+        if (!isCleanDataCalled) {
+          isCleanDataCalled = true;
+          let Object = {
+            BookName: document.getElementById("TheBook")?.value,
+            BookLink: document.getElementById("BookLink")?.value,
+            BookSize: document.getElementById("BookSize")?.value,
+            Time: new Date(),
+          };
 
-        reader.onload = async () => {
-          const storage = getStorage(app);
-          const storageRef = ref(
-            storage,
-            `كتب ${TheClass}/` + `${subject}/` + fileName
-          );
-
-          await uploadBytes(storageRef, file);
-          const downloadURL = await getDownloadURL(storageRef);
-          let size = `${(file.size / 1048576).toFixed(1)} MB`;
-
-          const uploadTask = uploadBytesResumable(storageRef, file);
-
-          uploadTask.on("state_changed", async (snapshot) => {
-            Progress = (
-              (snapshot.bytesTransferred / snapshot.totalBytes) *
-              100
-            ).toFixed(1);
-            document.querySelector(".progress span.pro").innerHTML =
-              " تم التحميل بنسبة " + Progress + "%";
-            document.querySelector(
-              ".progress span.Progress"
-            ).style.width = ` ${Progress}%`;
-
-            const bookRef = doc(db, `كتب ${TheClass}`, subject);
-            const docSnap = await getDoc(bookRef);
-
-            let Object = {
-              BookName: document.getElementById("Book_Name")?.value,
-              BookLink: downloadURL,
-              BookSize: size,
-            };
-            if (docSnap.data()?.books) {
-              const previousBooks = docSnap.data()?.books;
-              await updateDoc(bookRef, {
-                books: arrayUnion(Object, ...previousBooks),
-              });
-            } else {
-              await setDoc(bookRef, {
-                books: [Object],
-              });
-            }
-            if (Progress === "100.0" && !isCleanDataCalled) {
-              isCleanDataCalled = true;
-              setTimeout(() => {
-                this.CleanData();
-              }, 1000);
-            }
-          });
-        };
-
-        reader.readAsDataURL(file);
+          if (docSnap.data()?.books) {
+            const previousBooks = docSnap.data()?.books;
+            await updateDoc(bookRef, {
+              books: arrayUnion(Object, ...previousBooks),
+            });
+          } else {
+            await setDoc(bookRef, {
+              books: [Object],
+            });
+          }
+          setTimeout(() => {
+            this.CleanData();
+          }, 1000);
+        }
       }
     },
     async Add_Book_1() {
       this.isClicked_1 = true;
-      let Progress;
       let subject = this.Subject_Name;
       let TheClass = this.Class;
-      let file = document.querySelector("#upload_file_1").files[0];
       let isCleanDataCalled = false;
-      let isCleanDataCalled_1 = false;
       if (
-        file instanceof Blob &&
-        document.getElementById("Summarie").value !== ""
+        document.getElementById("SummarieBook").value !== "" &&
+        document.getElementById("SummarieLink").value !== "" &&
+        document.getElementById("SummarieSize").value !== ""
       ) {
-        this.Mian_Msg = true;
-        this.progress_1 = true;
-        setTimeout(() => {
-          document.querySelector(".progress span.pro.pro_1").innerHTML =
-            " تم التحميل بنسبة " + 0 + "%";
-        }, 10);
-        const filePath = file.name;
-        const fileName = filePath.split("\\").pop();
-        const reader = new FileReader();
+        const bookRef = doc(db, `ملخصات ${TheClass}`, subject);
+        const docSnap = await getDoc(bookRef);
+        if (!isCleanDataCalled) {
+          isCleanDataCalled = true;
+          let Object = {
+            BookName: document.getElementById("SummarieBook")?.value,
+            BookLink: document.getElementById("SummarieLink")?.value,
+            BookSize: document.getElementById("SummarieSize")?.value,
+            Time: new Date(),
+          };
 
-        reader.onload = async () => {
-          const storage = getStorage(app);
-          const storageRef = ref(storage, fileName);
-
-          await uploadBytes(storageRef, file);
-          const downloadURL = await getDownloadURL(storageRef);
-          let size = `${(file.size / 1048576).toFixed(1)} MB`;
-
-          const uploadTask = uploadBytesResumable(storageRef, file);
-
-          uploadTask.on("state_changed", async (snapshot) => {
-            Progress = (
-              (snapshot.bytesTransferred / snapshot.totalBytes) *
-              100
-            ).toFixed(1);
-            if (document.querySelector(".progress span.pro.pro_1")) {
-              document.querySelector(".progress span.pro.pro_1").innerHTML =
-                " تم التحميل بنسبة " + Progress + "%";
-              document.querySelector(
-                ".progress span.Progress.Progress_1"
-              ).style.width = ` ${Progress}%`;
-            }
-
-            const bookRef = doc(db, `ملخصات ${TheClass}`, subject);
-            const docSnap = await getDoc(bookRef);
-
-            if (!isCleanDataCalled) {
-              isCleanDataCalled = true;
-              let Object = {
-                BookName: document.getElementById("Summarie")?.value,
-                BookLink: downloadURL,
-                BookSize: size,
-                Time: new Date(),
-              };
-
-              if (docSnap.data()?.books) {
-                const previousBooks = docSnap.data()?.books;
-                await updateDoc(bookRef, {
-                  books: arrayUnion(Object, ...previousBooks),
-                });
-              } else {
-                await setDoc(bookRef, {
-                  books: [Object],
-                });
-              }
-            }
-            if (Progress === "100.0" && !isCleanDataCalled_1) {
-              isCleanDataCalled_1 = true;
-              setTimeout(() => {
-                this.CleanData_1();
-              }, 1000);
-            }
-          });
-        };
-
-        reader.readAsDataURL(file);
+          if (docSnap.data()?.books) {
+            const previousBooks = docSnap.data()?.books;
+            await updateDoc(bookRef, {
+              books: arrayUnion(Object, ...previousBooks),
+            });
+          } else {
+            await setDoc(bookRef, {
+              books: [Object],
+            });
+          }
+          setTimeout(() => {
+            this.CleanData_1();
+          }, 1000);
+        }
       }
     },
     async Add_Book_2() {
@@ -875,7 +824,6 @@ export default {
       let subject = this.Subject_Name;
       let TheClass = this.Class;
       let isCleanDataCalled = false;
-      // let isCleanDataCalled_1 = false;
       if (
         document.getElementById("Recordings").value !== "" &&
         document.getElementById("RecordingsLink").value !== "" &&
@@ -904,18 +852,13 @@ export default {
               books: [Object],
             });
           }
-
-          // if (!isCleanDataCalled_1) {
-          // isCleanDataCalled_1 = true;
           setTimeout(() => {
             this.CleanData_2();
           }, 1000);
-          // }
         }
       }
     },
     CleanData_2() {
-      this.Recordings = "";
       this.isClicked_2 = false;
       setTimeout(() => {
         this.Get_Data_2();
@@ -927,9 +870,7 @@ export default {
       }, 2000);
     },
     CleanData_1() {
-      this.Summarie = "";
       this.isClicked_1 = false;
-      this.Mian_Msg = false;
 
       setTimeout(() => {
         this.Get_Data_1();
@@ -941,9 +882,7 @@ export default {
       }, 2000);
     },
     CleanData() {
-      this.Book_Name = "";
       this.isClicked = false;
-      this.Mian_Msg = false;
       setTimeout(() => {
         this.Get_Data();
         this.Show_Add = false;

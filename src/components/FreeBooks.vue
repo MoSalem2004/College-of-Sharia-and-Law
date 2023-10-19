@@ -155,7 +155,6 @@ export default {
       setTimeout(() => {
         event.target.classList.remove("green");
       }, 5000);
-      console.log(event.target.parentElement.children[0]);
       navigator.clipboard.writeText(
         event.target.parentElement.children[0].innerHTML
       );
@@ -176,8 +175,6 @@ export default {
           this.Data.push(doc.data().books);
           if (this.Data[0].Time) {
             this.Data[0]?.sort((a, b) => b.Time.toMillis() - a.Time.toMillis());
-            console.log(doc.data().books);
-            console.log(this.Data);
           }
         }
       });

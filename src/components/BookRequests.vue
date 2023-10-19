@@ -239,7 +239,6 @@ export default {
       });
     },
     async UpdateData_0() {
-      console.log("UpdateData_0");
       let btn = document
         .querySelectorAll(".Container_Form .content  ")[0]
         .querySelectorAll(".main_icon > svg:first-child");
@@ -366,7 +365,6 @@ export default {
       }
     },
     async DeleteData_0() {
-      console.log("DeleteSummarie");
       let btn = document
         .querySelectorAll(".Container_Form .content  ")[0]
         .querySelectorAll(".main_icon > svg:last-child");
@@ -382,14 +380,12 @@ export default {
             querySnapshot.forEach(async (doc) => {
               if (doc.id === this.Allclass[0]) {
                 const data = doc.data();
-                console.log(data.books);
                 data.books.sort(
                   (a, b) => b.Time.toMillis() - a.Time.toMillis()
                 );
                 const newArray = data.books.filter(
                   (item, index) => index !== i
                 );
-                console.log("تم حذف العنصر بنجاح");
                 await updateDoc(doc.ref, { books: newArray });
                 btn[i].parentElement.parentElement.remove();
               }
@@ -402,7 +398,6 @@ export default {
       }
     },
     async DeleteData_1() {
-      console.log("DeleteSummarie");
       let btn = document
         .querySelectorAll(".Container_Form .content  ")[1]
         .querySelectorAll(".main_icon > svg:last-child");
@@ -418,14 +413,12 @@ export default {
             querySnapshot.forEach(async (doc) => {
               if (doc.id === this.Allclass[1]) {
                 const data = doc.data();
-                console.log(data.books);
                 data.books.sort(
                   (a, b) => b.Time.toMillis() - a.Time.toMillis()
                 );
                 const newArray = data.books.filter(
                   (item, index) => index !== i
                 );
-                console.log("تم حذف العنصر بنجاح");
                 await updateDoc(doc.ref, { books: newArray });
                 btn[i].parentElement.parentElement.remove();
               }
@@ -438,7 +431,6 @@ export default {
       }
     },
     async DeleteData_2() {
-      console.log("DeleteSummarie");
       let btn = document
         .querySelectorAll(".Container_Form .content  ")[2]
         .querySelectorAll(".main_icon > svg:last-child");
@@ -454,14 +446,12 @@ export default {
             querySnapshot.forEach(async (doc) => {
               if (doc.id === this.Allclass[2]) {
                 const data = doc.data();
-                console.log(data.books);
                 data.books.sort(
                   (a, b) => b.Time.toMillis() - a.Time.toMillis()
                 );
                 const newArray = data.books.filter(
                   (item, index) => index !== i
                 );
-                console.log("تم حذف العنصر بنجاح");
                 await updateDoc(doc.ref, { books: newArray });
                 btn[i].parentElement.parentElement.remove();
               }
@@ -474,7 +464,6 @@ export default {
       }
     },
     async DeleteData_3() {
-      console.log("DeleteSummarie");
       let btn = document
         .querySelectorAll(".Container_Form .content  ")[3]
         .querySelectorAll(".main_icon > svg:last-child");
@@ -490,14 +479,12 @@ export default {
             querySnapshot.forEach(async (doc) => {
               if (doc.id === this.Allclass[3]) {
                 const data = doc.data();
-                console.log(data.books);
                 data.books.sort(
                   (a, b) => b.Time.toMillis() - a.Time.toMillis()
                 );
                 const newArray = data.books.filter(
                   (item, index) => index !== i
                 );
-                console.log("تم حذف العنصر بنجاح");
                 await updateDoc(doc.ref, { books: newArray });
                 btn[i].parentElement.parentElement.remove();
               }
