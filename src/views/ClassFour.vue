@@ -50,7 +50,7 @@
         <div class="title">{{ subject.name }}</div>
         <div class="quran" v-if="subject.name === 'القرآن الكريم'">
           المقرر :
-          <div>من آية رقم 145 (سورة الصافات) إلي آية رقم 6 (سورة الناس)</div>
+          <div>من آية رقم 1 (سورة الفاتحة) إلي آية رقم 6 (سورة الناس)</div>
         </div>
         <div class="type">{{ subject.type }}</div>
       </div>
