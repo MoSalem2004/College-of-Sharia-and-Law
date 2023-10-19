@@ -42,6 +42,7 @@
           id="BookSize"
           placeholder="حجم الكتاب"
           required
+          v-model="BookSize"
         />
 
         <label for="BookSize"
@@ -52,7 +53,7 @@
     </div>
     <div class="File_Name" id="File_Name"></div>
     <div class="File_Size" id="File_Size"></div>
-
+    <div class="main_msg" v-if="Mian_Msg">أنتظر قليلاً</div>
     <button class="done" @click="Add_Book" :disabled="isClicked">تم</button>
   </div>
   <div class="Add_Book" v-if="Show_Add_1">
@@ -98,6 +99,7 @@
           id="SummarieSize"
           placeholder="حجم الملخص"
           required
+          v-model="SummarieSize"
         />
 
         <label for="SummarieSize"
@@ -108,7 +110,7 @@
     </div>
     <div class="File_Name" id="File_Name_1"></div>
     <div class="File_Size" id="File_Size_1"></div>
-
+    <div class="main_msg" v-if="Mian_Msg">أنتظر قليلاً</div>
     <button class="done" @click="Add_Book_1" :disabled="isClicked_1">تم</button>
   </div>
   <div class="Add_Book" v-if="Show_Add_2">
@@ -153,6 +155,7 @@
           id="RecordingsSize"
           placeholder="حجم التسجيل"
           required
+          v-model="RecordingsSize"
         />
 
         <label for="RecordingsSize"
@@ -163,12 +166,8 @@
     </div>
     <div class="File_Name" id="File_Name_2"></div>
     <div class="File_Size" id="File_Size_2"></div>
-
+    <div class="main_msg" v-if="Mian_Msg">أنتظر قليلاً</div>
     <button class="done" @click="Add_Book_2" :disabled="isClicked_2">تم</button>
-    <div class="progress" v-if="progress_2">
-      <span class="Progress Progress_2"></span>
-      <span class="pro pro_2"></span>
-    </div>
   </div>
   <div class="main_popup" @click="closeModal"></div>
   <div class="main_popup" style="z-index: 4" v-if="Show_Add"></div>
@@ -443,18 +442,20 @@ export default {
       Books_1: [],
       Books_2: [],
       progress: null,
-      progress_1: null,
       progress_2: null,
       showPopover: false,
-      Book_Name: "",
       SummarieState: true,
       RecordingsState: true,
       DeleteState: null,
       DeleteState_1: null,
       DeleteState_2: null,
       DeleteState_3: null,
-      Summarie: "مثال : الباب الأول - د / محمد ",
-      Recordings: "مثال :  تسجيل المحاضرة الأولي - د / محمد ",
+      TheBook: "مثال : كتاب أصول الفقه -  (غير حنفي) - موضوعي",
+      SummarieBook: "مثال : الباب الأول - د / محمد - (شافعي) ",
+      Recordings: " مثال :   رقم المحاضرة - د / محمد - (شافعي) ",
+      BookSize: "مثال : 2.5 MB",
+      SummarieSize: "مثال : 2.5 MB",
+      RecordingsSize: "مثال : 2.5 MB",
       isClicked: false,
       isClicked_1: false,
       isClicked_2: false,
@@ -595,27 +596,6 @@ export default {
         };
       }
     },
-    // Add_Report_2() {
-    // let file = document.querySelector("#upload_file_2").files[0];
-    // const filePath = file.name;
-    // let size = `${(file.size / 1048576).toFixed(1)} MB`;
-    // document.getElementById("File_Name_2").innerHTML = filePath;
-    // document.getElementById("File_Size_2").innerHTML = size;
-    // },
-    // Add_Report_1() {
-    //   let file = document.querySelector("#upload_file_1").files[0];
-    //   const filePath = file.name;
-    //   let size = `${(file.size / 1048576).toFixed(1)} MB`;
-    //   document.getElementById("File_Name_1").innerHTML = filePath;
-    //   document.getElementById("File_Size_1").innerHTML = size;
-    // },
-    // Add_Report() {
-    //   let file = document.querySelector("#upload_file").files[0];
-    //   const filePath = file.name;
-    //   let size = `${(file.size / 1048576).toFixed(1)} MB`;
-    //   document.getElementById("File_Name").innerHTML = filePath;
-    //   document.getElementById("File_Size").innerHTML = size;
-    // },
     Main_Delete_Function() {
       this.Main_Delete = !this.Main_Delete;
     },
@@ -756,6 +736,7 @@ export default {
         document.getElementById("BookLink").value !== "" &&
         document.getElementById("BookSize").value !== ""
       ) {
+        this.Mian_Msg = true;
         const bookRef = doc(db, `كتب ${TheClass}`, subject);
         const docSnap = await getDoc(bookRef);
         if (!isCleanDataCalled) {
@@ -793,6 +774,7 @@ export default {
         document.getElementById("SummarieLink").value !== "" &&
         document.getElementById("SummarieSize").value !== ""
       ) {
+        this.Mian_Msg = true;
         const bookRef = doc(db, `ملخصات ${TheClass}`, subject);
         const docSnap = await getDoc(bookRef);
         if (!isCleanDataCalled) {
@@ -830,8 +812,7 @@ export default {
         document.getElementById("RecordingsLink").value !== "" &&
         document.getElementById("RecordingsSize").value !== ""
       ) {
-        this.progress_2 = true;
-
+        this.Mian_Msg = true;
         const bookRef = doc(db, `تسجيلات ${TheClass}`, subject);
         const docSnap = await getDoc(bookRef);
         if (!isCleanDataCalled) {
@@ -861,6 +842,9 @@ export default {
     },
     CleanData_2() {
       this.isClicked_2 = false;
+      this.Mian_Msg = false;
+      this.Recordings = " مثال :   رقم المحاضرة - د / محمد - (شافعي) ";
+      this.RecordingsSize = "مثال : 2.5 MB";
       setTimeout(() => {
         this.Get_Data_2();
         this.Show_Add_2 = false;
@@ -872,7 +856,9 @@ export default {
     },
     CleanData_1() {
       this.isClicked_1 = false;
-
+      this.Mian_Msg = false;
+      this.SummarieBook = "مثال : الباب الأول - د / محمد - (شافعي) ";
+      this.SummarieSize = "مثال : 2.5 MB";
       setTimeout(() => {
         this.Get_Data_1();
         this.Show_Add_1 = false;
@@ -884,6 +870,9 @@ export default {
     },
     CleanData() {
       this.isClicked = false;
+      this.Mian_Msg = false;
+      this.TheBook = "مثال : كتاب أصول الفقه -  (غير حنفي) - موضوعي";
+      this.BookSize = "مثال : 2.5 MB";
       setTimeout(() => {
         this.Get_Data();
         this.Show_Add = false;

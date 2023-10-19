@@ -140,7 +140,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.show = true;
-    }, 1);
+    }, 0.1);
     setTimeout(() => {
       this.test();
       this.counter();
