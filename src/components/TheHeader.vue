@@ -3,7 +3,7 @@
     <div class="container fit">
       <router-link class="logo" to="/">
         <img src="../../assets/main-logo.webp" alt="logo" />
-        <div>أبناء كلية الشريعة و القانون بالقاهرة</div>
+        <div>طلاب كلية الشريعة و القانون بالقاهرة</div>
       </router-link>
       <div class="buttons">
         <a href="/#AllClasses">الفرق الدراسية</a>

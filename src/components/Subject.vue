@@ -253,7 +253,8 @@
             <div class="popover-content">حذف جميع الكتب</div>
           </div>
         </div>
-        <span v-show="Admin_State" @click="closeModal_1">
+        <span v-show="Admin_State" @click="closeModal_1" class="Add_Books">
+          <span> إضافة كتاب </span>
           <font-awesome-icon :icon="['fas', 'plus']" />
         </span>
         <font-awesome-icon
@@ -1144,6 +1145,23 @@ export default {
   padding: 5px;
   border-radius: 5px;
   margin-bottom: 10px;
+}
+.Add_Books {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--main-color);
+  padding: 1px 5px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  flex-direction: row-reverse;
+  svg {
+    color: #fff;
+    color: #fff !important;
+    font-size: 16px !important;
+  }
 }
 @media (max-width: 500px) {
   .feat .Head {
