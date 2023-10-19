@@ -879,7 +879,7 @@ export default {
       setTimeout(() => {
         this.DeleteSummarie();
         this.CounterSummarie();
-      }, 2000);
+      }, 2100);
     },
     CleanData() {
       this.isClicked = false;
