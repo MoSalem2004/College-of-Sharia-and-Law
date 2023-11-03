@@ -133,12 +133,7 @@ export default {
       this.UserState = false;
       this.state = !this.state;
       this.userstate();
-      // window.location.reload();
-      if (
-        localStorage.getItem("userclass") ===
-          document.querySelector("h1 span").innerHTML ||
-        localStorage.getItem("userclass") === "الكل"
-      ) {
+      if (localStorage.getItem("userclass") === "الكل") {
         this.Admin_State = true;
       } else {
         this.Admin_State = false;
