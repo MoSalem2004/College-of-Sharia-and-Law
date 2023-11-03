@@ -224,7 +224,7 @@ export default {
         &.email {
           color: rgb(131, 129, 129);
           text-align: left;
-          font-size: 12px;
+          font-size: 11px;
           font-weight: bold;
         }
       }
