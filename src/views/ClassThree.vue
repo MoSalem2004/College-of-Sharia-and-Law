@@ -1,66 +1,70 @@
 <template>
-  <div class="container fit In" id="logo" v-if="show">
-    <nav aria-label="breadcrumb">
-      <ol
-        class="breadcrumb"
-        style="direction: ltr; display: flex; justify-content: flex-end"
-      >
-        <li class="breadcrumb-item active" aria-current="page">
-          الفرقة الثالثة
-        </li>
-        <li class="breadcrumb-item">
-          <a href="/#AllClasses"> الفرق الدراسية </a>
-        </li>
-      </ol>
-    </nav>
-    <h1>
-      <span>الفرقة الثالثة</span>
-      <div>
-        <span @click="close_modal">
-          <font-awesome-icon :icon="['fas', 'file-excel']" />
-          <span>التقارير الأسبوعية</span>
-        </span>
-        <span @click="close_modal_2">
-          <font-awesome-icon :icon="['fas', 'book']" />
-          <span>كتب مجانية</span>
-        </span>
-      </div>
-    </h1>
-    <Report v-if="Active" :Class="this.class" @close_modal="close_modal" />
-    <FreeBooks
-      @close_modal_2="close_modal_2"
-      v-if="Show_Book"
-      :Class="this.class"
-    />
-    <TheSubject
-      v-if="Show_Subject"
-      :Subject_Name="this.Subject_Name"
-      :Class="this.class"
-      @close_modal_1="close_modal_1"
-    />
-    <div class="counter">( <span></span> ) مادة دراسية</div>
-    <div class="content">
-      <div
-        class="box"
-        v-for="(subject, index) in subjects"
-        :key="subject"
-        @click="close_modal_1"
-      >
-        <div class="count">{{ index + 1 }}</div>
-        <div class="title">{{ subject.name }}</div>
-        <div class="quran" v-if="subject.name === 'القرآن الكريم'">
-          المقرر :
-          <div>من آية رقم 1 (سورة الفاتحة) رقم 75 إلي آية (سورة الصافات)</div>
+  <div class="class" v-if="show">
+    <div class="container fit In" id="logo">
+      <nav aria-label="breadcrumb">
+        <ol
+          class="breadcrumb"
+          style="direction: ltr; display: flex; justify-content: flex-end"
+        >
+          <li class="breadcrumb-item active" aria-current="page">
+            الفرقة الثالثة
+          </li>
+          <li class="breadcrumb-item">
+            <a href="/#AllClasses"> الفرق الدراسية </a>
+          </li>
+        </ol>
+      </nav>
+      <h1>
+        <span>الفرقة الثالثة</span>
+        <div>
+          <span @click="close_modal">
+            <font-awesome-icon :icon="['fas', 'file-excel']" />
+            <span>التقارير الأسبوعية</span>
+          </span>
+          <span @click="close_modal_2">
+            <font-awesome-icon :icon="['fas', 'book']" />
+            <span>كتب مجانية</span>
+          </span>
         </div>
-        <div class="type">{{ subject.type }}</div>
+      </h1>
+      <Report v-if="Active" :Class="this.class" @close_modal="close_modal" />
+      <FreeBooks
+        @close_modal_2="close_modal_2"
+        v-if="Show_Book"
+        :Class="this.class"
+      />
+      <TheSubject
+        v-if="Show_Subject"
+        :Subject_Name="this.Subject_Name"
+        :Class="this.class"
+        @close_modal_1="close_modal_1"
+      />
+      <div class="counter">( <span></span> ) مادة دراسية</div>
+      <div class="content">
+        <div
+          class="box"
+          v-for="(subject, index) in subjects"
+          :key="subject"
+          @click="close_modal_1"
+        >
+          <div class="count">{{ index + 1 }}</div>
+          <div class="title">{{ subject.name }}</div>
+          <div class="quran" v-if="subject.name === 'القرآن الكريم'">
+            المقرر :
+            <div>من آية رقم 1 (سورة الفاتحة) رقم 75 إلي آية (سورة الصافات)</div>
+          </div>
+          <div class="type">{{ subject.type }}</div>
+        </div>
       </div>
     </div>
+    <TheFooter />
   </div>
 </template>
 <script>
 import Report from "./Report.vue";
 import TheSubject from "../components/Subject.vue";
 import FreeBooks from "../components/FreeBooks.vue";
+import TheFooter from "@/components/TheFooter.vue";
 export default {
   name: "ClassThree",
   emits: ["close_modal_2", "close_modal_1", "close_modal"],
@@ -68,6 +72,7 @@ export default {
     Report,
     TheSubject,
     FreeBooks,
+    TheFooter,
   },
   data() {
     return {

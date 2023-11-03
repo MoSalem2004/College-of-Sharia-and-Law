@@ -1,16 +1,16 @@
 <template>
   <TheHeader />
   <router-view />
-  <TheFooter />
+  <!-- <TheFooter /> -->
 </template>
 <script>
 import TheHeader from "@/components/TheHeader.vue";
-import TheFooter from "@/components/TheFooter.vue";
+// import TheFooter from "@/components/TheFooter.vue";
 
 export default {
   components: {
     TheHeader,
-    TheFooter,
+    // TheFooter,
   },
 };
 </script>
@@ -41,6 +41,7 @@ body {
   overflow: scroll;
   height: 90vh;
   max-height: 90vh;
+  animation: scale 0.5s linear;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -57,6 +58,19 @@ svg {
 .fit {
   width: 90%;
   margin: 0 auto;
+}
+.class {
+  animation: scale 0.5s linear;
+}
+@keyframes scale {
+  0% {
+    // transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    // transform: scale(1);
+  }
 }
 h2.main-title {
   color: var(--main-color);
@@ -118,6 +132,7 @@ h2.main-title {
   margin: 30px auto 2px;
   position: relative;
   overflow: auto;
+  min-height: 100vh;
   nav {
     border-radius: 5px;
     padding: 10px 20px;

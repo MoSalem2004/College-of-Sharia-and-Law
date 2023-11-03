@@ -1,0 +1,16 @@
+total 1323
+  0 '~
+  1 README.md
+  8 assets
+  1 babel.config.js
+  4 dist
+  1 firestore.json
+  1 jsconfig.json
+640 node_modules
+660 package-lock.json
+  4 package.json
+  0 public
+  0 result.txt
+  4 src
+  0 static
+  1 vue.config.js
