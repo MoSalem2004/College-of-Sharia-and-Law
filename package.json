@@ -26,6 +26,7 @@
     "firebase": "^10.3.0",
     "firebase-admin": "^11.10.1",
     "foundation-sites": "^6.8.1",
+    "is-online": "^10.0.0",
     "jquery": "^3.7.1",
     "mdb-ui-kit": "^6.4.1",
     "popper.js": "^1.16.1",

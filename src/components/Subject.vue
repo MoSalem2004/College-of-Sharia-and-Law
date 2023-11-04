@@ -383,11 +383,11 @@
       </div>
     </div>
   </div>
+  <div class="online" v-if="online">{{ MSG_Online }}</div>
 </template>
 <script>
 import {
   collection,
-  //   addDoc,
   getFirestore,
   getDocs,
   getDoc,
@@ -396,17 +396,7 @@ import {
   updateDoc,
   deleteField,
   arrayUnion,
-  //   serverTimestamp,
 } from "firebase/firestore";
-// import {
-// getStorage,
-// ref,
-// uploadBytes,
-// getDownloadURL,
-// uploadBytesResumable,
-//   deleteObject,
-//   listAll,
-// } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -420,7 +410,7 @@ const firebaseConfig = {
 import LodingIcon from "../components/LodingIcon.vue";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
+import isOnline from "is-online";
 export default {
   name: "TheSubject",
   props: ["Subject_Name", "Class"],
@@ -461,13 +451,24 @@ export default {
       isClicked_2: false,
       Main_Delete: null,
       Mian_Msg: null,
+      MSG_Online: "انت غير متصل بالإنترنت !",
+      online: null,
     };
+  },
+  async created() {
+    const online = await isOnline();
+    if (!online) {
+      this.showLoading = false;
+      this.online = true;
+      setTimeout(() => {
+        // this.online = false;
+      }, 5000);
+    } else {
+      this.online = false;
+    }
   },
   mounted() {
     this.showLoading = true;
-    setInterval(() => {
-      this.showLoading = false;
-    }, 2500);
     setTimeout(() => {
       this.test();
       this.Get_Data_1();
@@ -610,18 +611,22 @@ export default {
       this.showPopover = false;
     },
     CounterRecordings() {
-      document.querySelector(
-        ".feat.feat_2 .Head .header > span span"
-      ).innerHTML = document.querySelectorAll(
-        ".feat.feat_2 .body .box "
-      ).length;
+      if (document.querySelector(".feat.feat_2 .Head .header > span span")) {
+        document.querySelector(
+          ".feat.feat_2 .Head .header > span span"
+        ).innerHTML = document.querySelectorAll(
+          ".feat.feat_2 .body .box "
+        ).length;
+      }
     },
     CounterSummarie() {
-      document.querySelector(
-        ".feat.feat_1 .Head .header > span span"
-      ).innerHTML = document.querySelectorAll(
-        ".feat.feat_1 .body .box "
-      ).length;
+      if (document.querySelector(".feat.feat_1 .Head .header > span span")) {
+        document.querySelector(
+          ".feat.feat_1 .Head .header > span span"
+        ).innerHTML = document.querySelectorAll(
+          ".feat.feat_1 .body .box "
+        ).length;
+      }
     },
     SummarieFunction() {
       if (this.SummarieState) {
@@ -679,7 +684,6 @@ export default {
       this.DeleteFunction();
     },
     async Get_Data_2() {
-      //   if (this.RecordingsState === true) {
       let subject = this.Subject_Name;
       let TheClass = this.Class;
       const querySnapshot = await getDocs(
@@ -691,13 +695,12 @@ export default {
         }
       });
       this.Books_2?.sort((a, b) => b.Time.toMillis() - a.Time.toMillis());
+      this.showLoading = false;
       setTimeout(() => {
         this.CounterRecordings();
       }, 100);
-      //   }
     },
     async Get_Data_1() {
-      //   if (this.SummarieState === true) {
       let subject = this.Subject_Name;
       let TheClass = this.Class;
       const querySnapshot = await getDocs(collection(db, `ملخصات ${TheClass}`));
@@ -707,7 +710,7 @@ export default {
         }
       });
       this.Books_1?.sort((a, b) => b.Time.toMillis() - a.Time.toMillis());
-
+      this.showLoading = false;
       setTimeout(() => {
         this.CounterSummarie();
       }, 100);
@@ -722,6 +725,7 @@ export default {
           this.Books = doc.data().books;
         }
       });
+      this.showLoading = false;
       setTimeout(() => {
         this.DeleteBook();
       }, 1000);
@@ -1150,6 +1154,27 @@ export default {
     color: #fff;
     color: #fff !important;
     font-size: 16px !important;
+  }
+}
+.online {
+  position: fixed;
+  bottom: 0px;
+  background: var(--main-color);
+  width: 100%;
+  z-index: 3;
+  left: 0;
+  text-align: center;
+  color: #fff;
+  padding: 5px;
+  animation: online 0.3s linear;
+  // transform: translateY(35px);
+}
+@keyframes online {
+  from {
+    transform: translatex(100%);
+  }
+  to {
+    transform: translatex(0);
   }
 }
 @media (max-width: 500px) {
