@@ -461,10 +461,8 @@ export default {
       this.showLoading = false;
       this.online = true;
       setTimeout(() => {
-        // this.online = false;
-      }, 5000);
-    } else {
-      this.online = false;
+        this.online = false;
+      }, 10000);
     }
   },
   mounted() {

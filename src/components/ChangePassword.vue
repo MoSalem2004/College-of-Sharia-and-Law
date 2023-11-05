@@ -2,7 +2,7 @@
   <div class="main_popup" @click="closeModal"></div>
   <div class="Container_Form container">
     <div class="ChangePassword">
-      <header>
+      <header class="login">
         <h3>تغيير الباسوورد</h3>
         <font-awesome-icon
           :icon="['fas', 'window-close']"

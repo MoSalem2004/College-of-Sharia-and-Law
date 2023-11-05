@@ -2,7 +2,7 @@
   <div>
     <div class="main_popup" style="z-index: 4"></div>
     <div class="Icon">
-      <font-awesome-icon :icon="['fas', 'circle-notch']" class="fa-spin" />
+      <img src="../../assets/animation_loldv2bz_small.gif" alt="" />
     </div>
   </div>
 </template>
