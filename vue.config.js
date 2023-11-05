@@ -1,9 +1,6 @@
 const webpack = require("webpack");
 
 module.exports = {
-  devServer: {
-    disableHostCheck: true,
-  },
   configureWebpack: {
     resolve: {
       fallback: {

@@ -42,7 +42,9 @@
           <a
             href="https://www.facebook.com/profile.php?id=61551365201853"
             id="fac"
-            >قم بزيارة صفحتنا عبر الفيسبوك</a
+          >
+            <font-awesome-icon :icon="['fab', 'facebook']" />
+            قم بزيارة صفحتنا عبر الفيس بوك</a
           >
         </p>
       </div>

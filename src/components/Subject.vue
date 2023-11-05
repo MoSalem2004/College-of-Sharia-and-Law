@@ -458,7 +458,9 @@ export default {
   async created() {
     const online = await isOnline();
     if (!online) {
-      this.showLoading = false;
+      setTimeout(() => {
+        this.showLoading = false;
+      }, 1000);
       this.online = true;
       setTimeout(() => {
         this.online = false;
