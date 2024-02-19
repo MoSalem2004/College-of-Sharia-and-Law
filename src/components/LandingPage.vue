@@ -1,12 +1,12 @@
 <template>
   <div class="LandingPage">
-    <img src="../../assets/cloud.webp" alt="" id="cloud_1" />
-    <img src="../../assets/cloud.webp" alt="" id="cloud" />
-    <img
+    <!-- <img src="../../assets/cloud.webp" alt="" id="cloud_1" />
+    <img src="../../assets/cloud.webp" alt="" id="cloud" /> -->
+    <!-- <img
       src="../../assets/_4cbf7f3d-57d3-4566-965a-add6ac9c088f.jpg"
       alt=""
       id="college"
-    />
+    /> -->
   </div>
 </template>
 <script>
@@ -28,12 +28,17 @@ export default {
 </script>
 <style lang="scss" scoped>
 .LandingPage {
+  background-image: url("../../assets/_4cbf7f3d-57d3-4566-965a-add6ac9c088f.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   overflow: hidden;
-  height: 85vh;
+  height: 100vh;
+  // margin-top: 70px;
   img {
     height: 85vh;
     position: absolute;

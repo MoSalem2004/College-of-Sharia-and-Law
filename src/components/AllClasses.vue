@@ -105,26 +105,17 @@ export default {
 @media (max-width: 500px) {
   .container {
     flex-wrap: wrap;
-    gap: 35px;
+    gap: 55px;
     > a {
       width: 100%;
     }
   }
 }
-@media (min-width: 500px) and (max-width: 900px) {
+@media (min-width: 500px) and (max-width: 992px) {
   .container {
     flex-wrap: wrap;
     gap: 35px;
-    > a {
-      width: 100%;
-    }
-  }
-}
-
-@media (min-width: 900px) {
-  .container {
-    flex-wrap: wrap;
-    gap: 45px;
+    justify-content: center;
     > a {
       width: 46%;
     }

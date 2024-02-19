@@ -5,10 +5,10 @@
         <img src="../../assets/main-logo.webp" alt="logo" />
         <div>طلاب كلية الشريعة و القانون بالقاهرة</div>
       </router-link>
-      <div class="buttons">
+      <!-- <div class="buttons">
         <a href="/#AllClasses">الفرق الدراسية</a>
         <a href="/#Conect">تابعنا</a>
-      </div>
+      </div> -->
       <div class="Sign_In">
         <div v-if="username" style="position: relative">
           <div class="User_Logo" @click="State">{{ firstLetters }}</div>
@@ -62,6 +62,22 @@ export default {
     TheSignUp,
     AdminManagement,
     BookRequests,
+  },
+  mounted() {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 0) {
+        document.querySelector(".Header").style.cssText =
+          "background:#fff ; box-shadow: 0 0 10px #ddd;";
+      } else {
+        document.querySelector(
+          ".Header"
+        ).style.cssText = `background-image: url(http://localhost:8081/img/_4cbf7f3d-57d3-4566-965a-add6ac9c088f.ca84108a.jpg);
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    background-color: rgba(255, 255, 255, 0.5803921569);`;
+      }
+    });
   },
   data() {
     return {
@@ -144,8 +160,18 @@ export default {
 </script>
 <style lang="scss" scoped>
 .Header {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
+  // border-bottom: 1px solid #ddd;
+  background-image: url("../../assets/_4cbf7f3d-57d3-4566-965a-add6ac9c088f.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-color: #ffffff94;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  transition: 0.3s;
   .container {
     display: flex;
     justify-content: space-between;
@@ -168,7 +194,7 @@ export default {
       gap: 10px;
       a {
         width: 135px;
-        padding: 0 10px;
+        // padding: 0 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -246,6 +272,7 @@ export default {
       cursor: pointer;
       border-radius: 5px;
       transition: 0.3s;
+      // background: #0088ff33;
       &:hover {
         border: 1px solid #fff;
         color: #fff;
@@ -265,13 +292,13 @@ export default {
 }
 @media (max-width: 500px) {
   .Header .container {
-    flex-direction: column;
+    // flex-direction: column;
     gap: 10px;
     .logo {
       justify-content: flex-start;
       width: 100%;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #ddd;
+      // padding-bottom: 10px;
+      // border-bottom: 1px solid #ddd;
     }
     .buttons {
       width: 100%;
@@ -288,6 +315,9 @@ export default {
     .Sign_In {
       margin-right: auto;
       // margin: 15px auto 0 0;
+      span {
+        display: none;
+      }
     }
   }
   .Header .container .logo div {

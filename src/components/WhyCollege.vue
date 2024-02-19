@@ -48,7 +48,7 @@ export default {
       display: flex;
       align-items: center;
       gap: 10px;
-      background: #eee;
+      background: #0088ff33;
       padding: 10px;
       border-radius: 5px;
       span:not(.number) {
