@@ -65,7 +65,7 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 0) {
+      if (window.scrollY > 2) {
         document.querySelector(".Header").style.cssText =
           "background:#fff ; box-shadow: 0 0 10px #ddd;";
       } else {
