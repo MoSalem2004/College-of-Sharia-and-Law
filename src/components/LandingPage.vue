@@ -1,12 +1,8 @@
 <template>
   <div class="LandingPage">
-    <!-- <img src="../../assets/cloud.webp" alt="" id="cloud_1" />
-    <img src="../../assets/cloud.webp" alt="" id="cloud" /> -->
-    <!-- <img
-      src="../../assets/_4cbf7f3d-57d3-4566-965a-add6ac9c088f.jpg"
-      alt=""
-      id="college"
-    /> -->
+    <a href="#AllClasses"
+      ><font-awesome-icon :icon="['fas', 'angle-down']"
+    /></a>
   </div>
 </template>
 <script>
@@ -38,7 +34,21 @@ export default {
   position: relative;
   overflow: hidden;
   height: 100vh;
+  position: relative;
   // margin-top: 70px;
+  a {
+    position: absolute;
+    bottom: 15px;
+    font-size: 31px;
+    svg {
+      background: #fff;
+      font-size: 32px;
+      color: var(--main-color);
+      width: 122px;
+      height: 35px;
+      border-radius: 5px;
+    }
+  }
   img {
     height: 85vh;
     position: absolute;
@@ -57,7 +67,7 @@ export default {
 }
 @media (max-width: 500px) {
   .LandingPage {
-    height: 359.2px !important;
+    height: 100vh !important;
     img {
       width: 100%;
       height: 359.2px !important;

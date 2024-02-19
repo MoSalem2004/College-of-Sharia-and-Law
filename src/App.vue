@@ -362,7 +362,7 @@ h2.main-title:last-child {
     flex-direction: column-reverse;
   }
   .Header .container .logo div {
-    font-size: 13px !important;
+    font-size: 15px !important;
   }
   h1 {
     & > div {
