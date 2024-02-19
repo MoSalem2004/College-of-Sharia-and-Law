@@ -82,6 +82,15 @@ h2.main-title {
   margin: 70px auto 50px;
   text-align: center;
 }
+h2.main-title:last-child {
+  color: #ffffff;
+  font-size: 20px;
+  margin: -15px auto 50px;
+  text-align: center;
+  background: var(--main-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
 .main_popup {
   position: fixed;
   top: 0;
@@ -161,7 +170,7 @@ h2.main-title {
     color: var(--main-color);
     border-radius: 5px;
     background: #eee;
-    border-bottom: 1px solid var(--main-color);
+    border-bottom: 4px solid var(--main-color);
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     padding: 20px;
@@ -206,6 +215,7 @@ h2.main-title {
     justify-content: flex-start;
     gap: 13px;
     .box {
+      background: #0088ff33;
       justify-content: space-between;
       width: 32.4%;
       padding: 10px;

@@ -53,7 +53,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   margin-bottom: 110px;
   > a {
     width: 24%;

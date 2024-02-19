@@ -1,7 +1,10 @@
 <template>
   <div class="whyCollege" id="Why">
     <div class="container fit">
-      <h2 class="main-title">لماذا تختار كلية الشريعة و القانون ؟</h2>
+      <div class="title">
+        <img src="../../assets/Animation-1708119404366.gif" alt="" />
+        <h2 class="main-title">لماذا تختار كلية الشريعة و القانون؟</h2>
+      </div>
       <div class="content">
         <div v-for="(why, index) in Why" :key="why">
           <span class="number">{{ index + 1 }}</span>
@@ -39,6 +42,17 @@ export default {
 </script>
 <style lang="scss" scoped>
 .whyCollege {
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    padding: 20px;
+    background: #0088ff33;
+    border-radius: 6px;
+  }
   .content {
     display: flex;
     flex-direction: column;
