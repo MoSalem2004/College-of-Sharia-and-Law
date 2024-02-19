@@ -16,13 +16,13 @@
             <div>أهلا {{ username }}</div>
             <div class="email">{{ useremail }}</div>
             <div class="add" @click="close_modal_2">تغيير الباسوورد</div>
-            <div class="add" v-show="Mosalem_Admin" @click="close_modal_3">
+            <div class="add" v-if="Mosalem_Admin" @click="close_modal_3">
               إضافة المشرفين
             </div>
-            <div class="add" v-show="Mosalem_Admin" @click="close_modal_4">
+            <div class="add" v-if="Mosalem_Admin" @click="close_modal_4">
               إدارة المشرفين
             </div>
-            <div class="add" v-show="Mosalem_Admin" @click="close_modal_5">
+            <div class="add" v-if="Mosalem_Admin" @click="close_modal_5">
               طلبات التبرع
             </div>
             <button @click="logout">تسجيل خروج</button>

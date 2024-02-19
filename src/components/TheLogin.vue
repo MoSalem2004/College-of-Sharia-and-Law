@@ -98,9 +98,10 @@ export default {
     },
     async login() {
       event.preventDefault();
+      console.log("login");
       try {
         const q = query(
-          collection(db, "Admins"),
+          collection(db, "المشرفين"),
           where("email", "==", this.email)
         );
         const querySnapshot = await getDocs(q);

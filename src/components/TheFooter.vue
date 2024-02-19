@@ -35,7 +35,7 @@
         <p>
           تصميم وتطوير بواسطة
           <a href="https://www.facebook.com/profile.php?id=61551365201853">
-            <strong>محمد سالم</strong>
+            <strong> Salem Team</strong>
           </a>
         </p>
         <p>

@@ -35,6 +35,10 @@ export default {
 body {
   direction: rtl;
   font-family: system-ui;
+  // background-image: url("../assets/_afcec173-2cc8-480e-8346-523fe6e4763e.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
 }
 .Container_Form {
   width: 90% !important;

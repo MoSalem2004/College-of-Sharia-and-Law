@@ -3,7 +3,7 @@
     <img src="../../assets/cloud.webp" alt="" id="cloud_1" />
     <img src="../../assets/cloud.webp" alt="" id="cloud" />
     <img
-      src="../../assets/الجامع-الازهر-الشريف-removebg-preview.webp"
+      src="../../assets/_4cbf7f3d-57d3-4566-965a-add6ac9c088f.jpg"
       alt=""
       id="college"
     />

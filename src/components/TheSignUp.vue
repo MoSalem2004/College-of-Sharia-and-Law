@@ -145,8 +145,8 @@ export default {
     },
     async signUp(event) {
       event.preventDefault();
-      const salt = bcrypt.genSaltSync(10); // توليد الملح (salt)
-      const hashedPassword = bcrypt.hashSync(this.password, salt); // تجزئة كلمة المرور
+      const salt = bcrypt.genSaltSync(10);
+      const hashedPassword = bcrypt.hashSync(this.password, salt);
       this.password = hashedPassword;
       await addDoc(collection(db, "Admins"), {
         name: this.name,
