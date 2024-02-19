@@ -56,30 +56,18 @@ export default {
   gap: 10px;
   margin-bottom: 110px;
   > a {
-    // border: 1px solid #ddd;
-    // border-radius: 5px;
     width: 24%;
-
-    // display: flex;
     position: relative;
-    // flex-direction: column;
     cursor: pointer;
-    // justify-content: flex-end;
-    // gap: 10px;
     transition: 0.3s;
     &:hover {
-      // border-color: var(--main-color);
-      // box-shadow: 0 0 10px #ddd;
       filter: opacity(0.9);
       transform: scale(1.05);
       img {
         filter: hue-rotate(350deg);
-        --tw-saturate: saturate(1.5);
       }
       & > div {
         width: 100%;
-        // left: 0;
-        // transform: translate(0px, -40px);
       }
     }
     img {
@@ -105,24 +93,7 @@ export default {
       font-weight: bold;
     }
     .Subject {
-      // padding: 10px;
-      // background: #fff;
-      // margin: 10px auto 10px 10px;
-      // text-align: left;
-      // border-radius: 50px;
-      // color: #717171;
-      // font-weight: bold;
       font-size: 12px;
-    }
-    .title {
-      // text-align: center;
-      // position: absolute;
-      // top: 50%;
-      // left: 50%;
-      // transform: translate(-50%, -50%);
-      // color: var(--main-color);
-      // font-size: 21px;
-      // font-weight: bold;
     }
   }
 }
@@ -137,7 +108,6 @@ export default {
     gap: 35px;
     > a {
       width: 100%;
-      // height: 185px;
     }
   }
 }
