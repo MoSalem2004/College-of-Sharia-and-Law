@@ -142,7 +142,7 @@ h2.main-title:last-child {
   }
 }
 .container.fit.In {
-  margin: 30px auto 2px;
+  margin: 80px auto 2px;
   position: relative;
   overflow: auto;
   min-height: 100vh;
