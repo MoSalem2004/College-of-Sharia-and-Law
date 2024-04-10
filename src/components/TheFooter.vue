@@ -151,4 +151,17 @@ export default {
     }
   }
 }
+@media (min-width: 500px) and (max-width: 900px) {
+  .Copyright {
+    & > div {
+      flex-direction: column;
+      p:last-child {
+        width: 100%;
+        a {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
 </style>

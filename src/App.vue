@@ -8,6 +8,20 @@ import TheHeader from "@/components/TheHeader.vue";
 // import TheFooter from "@/components/TheFooter.vue";
 
 export default {
+  mounted() {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 1) {
+        document.querySelector(".Header").style.cssText =
+          "background:#fff ; box-shadow: 0 0 10px #ddd;";
+      } else {
+        document.querySelector(".Header").style.cssText = `
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    background-color: rgba(255, 255, 255, 0.5803921569);`;
+      }
+    });
+  },
   components: {
     TheHeader,
     // TheFooter,
@@ -65,6 +79,7 @@ svg {
 }
 .class {
   animation: scale 0.5s linear;
+  margin-top: 75px;
 }
 @keyframes scale {
   0% {
@@ -404,7 +419,7 @@ h2.main-title:last-child {
   .breadcrumb-item + .breadcrumb-item {
     order: -1 !important;
   }
-  .container.fit.In.popup header {
+  .container.fit.In.kk header {
     flex-direction: column-reverse;
   }
   ol {

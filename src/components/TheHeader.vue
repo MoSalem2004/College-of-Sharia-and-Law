@@ -3,7 +3,7 @@
     <div class="container fit">
       <router-link class="logo" to="/">
         <img src="../../assets/main-logo.webp" alt="logo" />
-        <div>طلاب كلية الشريعة و القانون</div>
+        <div class="students">طلاب كلية الشريعة و القانون</div>
       </router-link>
       <!-- <div class="buttons">
         <a href="/#AllClasses">الفرق الدراسية</a>
@@ -36,7 +36,7 @@
         </div>
         <div class="sign" v-else @click="close_modal">
           <font-awesome-icon :icon="['fas', 'sign-in-alt']" />
-          <span> تسجيل دخول </span>
+          <div class="Sing_Text">تسجيل دخول</div>
         </div>
       </div>
     </div>
@@ -65,13 +65,11 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 2) {
+      if (window.scrollY > 1) {
         document.querySelector(".Header").style.cssText =
           "background:#fff ; box-shadow: 0 0 10px #ddd;";
       } else {
-        document.querySelector(
-          ".Header"
-        ).style.cssText = `background-image: url(http://localhost:8081/img/_4cbf7f3d-57d3-4566-965a-add6ac9c088f.ca84108a.jpg);
+        document.querySelector(".Header").style.cssText = `
     background-size: cover;
     background-position: center top;
     background-attachment: fixed;
@@ -265,14 +263,17 @@ export default {
       }
     }
     .sign {
-      // & > div {
+      // width: 150px;
       border: 1px solid var(--main-color);
       padding: 10px;
       color: var(--main-color);
       cursor: pointer;
       border-radius: 5px;
       transition: 0.3s;
-      // background: #0088ff33;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       &:hover {
         border: 1px solid #fff;
         color: #fff;
@@ -289,6 +290,9 @@ export default {
       border-radius: 5px;
     }
   }
+}
+.Sign_In {
+  // width: 150px;
 }
 @media (max-width: 500px) {
   .Header .container {
@@ -318,6 +322,12 @@ export default {
       span {
         display: none;
       }
+      & > .Sing_Text {
+        display: none;
+      }
+    }
+    .students {
+      display: none;
     }
   }
   .Header .container .logo div {
@@ -327,7 +337,7 @@ export default {
 
 @media (min-width: 500px) and (max-width: 900px) {
   .Header .container {
-    flex-direction: column;
+    // flex-direction: column;
     .logo {
       justify-content: flex-start;
       width: 100%;
@@ -343,7 +353,10 @@ export default {
     .sign,
     .Sign_In {
       margin-right: auto;
-      margin: 15px auto 0 0;
+      // margin: 15px auto 0 0;
+      .Sing_Text {
+        display: none;
+      }
     }
   }
 }

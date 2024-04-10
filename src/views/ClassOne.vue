@@ -77,6 +77,7 @@ import TheFooter from "@/components/TheFooter.vue";
 export default {
   name: "ClassOne",
   emits: ["close_modal_2", "close_modal_1", "close_modal"],
+
   components: {
     Report,
     TheSubject,

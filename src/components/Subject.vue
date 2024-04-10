@@ -173,7 +173,7 @@
   <div class="main_popup" style="z-index: 4" v-if="Show_Add"></div>
   <div class="main_popup" style="z-index: 4" v-if="Show_Add_1"></div>
   <div class="main_popup" style="z-index: 4" v-if="Show_Add_2"></div>
-  <div class="container fit In popup">
+  <div class="container fit In popup m-0">
     <div class="main_popup" v-if="DeleteState" @click="DeleteFunction"></div>
     <div class="delete_box" v-if="DeleteState">
       <div>متأكد من أنك تريد حذف جميع الكتب ؟</div>
@@ -312,7 +312,7 @@
           <div class="title">{{ Book.BookName }}</div>
           <div class="size">{{ Book.BookSize }}</div>
           <div class="time">
-            {{
+            <!-- {{
               new Date(Book.Time.toMillis()).toLocaleString(["ar"], {
                 weekday: "short",
                 year: "numeric",
@@ -321,7 +321,7 @@
                 hour: "2-digit",
                 minute: "2-digit",
               })
-            }}
+            }} -->
           </div>
           <a class="UploadBook" :href="Book.BookLink">
             <font-awesome-icon :icon="['fas', 'upload']" />
@@ -364,7 +364,7 @@
           <div class="title">{{ Book.BookName }}</div>
           <div class="size">{{ Book.BookSize }}</div>
           <div class="time">
-            {{
+            <!-- {{
               new Date(Book.Time.toMillis()).toLocaleString(["ar"], {
                 weekday: "short",
                 year: "numeric",
@@ -373,7 +373,7 @@
                 hour: "2-digit",
                 minute: "2-digit",
               })
-            }}
+            }} -->
           </div>
           <a class="UploadBook" :href="Book.BookLink">
             <font-awesome-icon :icon="['fas', 'upload']" />

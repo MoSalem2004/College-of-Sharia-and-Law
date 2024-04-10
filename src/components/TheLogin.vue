@@ -33,12 +33,12 @@
               :type="showPassword ? 'text' : 'password'"
               class="form-control"
               id="Password"
-              placeholder="الباسوورد"
+              placeholder="كلمة المرور"
               v-model="password"
               required
             />
             <label for="Password"
-              ><font-awesome-icon :icon="['fas', 'lock']" /> الباسوورد
+              ><font-awesome-icon :icon="['fas', 'lock']" /> كلمة المرور
             </label>
             <div class="Show_Password" @click="showPassword = !showPassword">
               <font-awesome-icon
@@ -98,10 +98,9 @@ export default {
     },
     async login() {
       event.preventDefault();
-      console.log("login");
       try {
         const q = query(
-          collection(db, "المشرفين"),
+          collection(db, "Admins"),
           where("email", "==", this.email)
         );
         const querySnapshot = await getDocs(q);
@@ -111,7 +110,6 @@ export default {
             this.password,
             admin.password
           );
-
           if (isPasswordCorrect) {
             if (querySnapshot.docs.length > 0) {
               const user = querySnapshot.docs[0].data();
