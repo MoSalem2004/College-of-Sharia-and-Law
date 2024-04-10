@@ -356,6 +356,9 @@ h2.main-title:last-child {
   }
 }
 @media (max-width: 500px) {
+  h2.main-title:last-child {
+    font-size: 18px !important;
+  }
   .MSG {
     font-size: 12px;
   }
