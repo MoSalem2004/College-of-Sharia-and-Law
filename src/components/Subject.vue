@@ -264,15 +264,31 @@
     </header>
 
     <div class="body">
-      <div class="box" v-for="Book in Books" :key="Book">
+      <div class="box" v-for="(Book, index) in Books" :key="Book">
         <font-awesome-icon
           :icon="['fas', 'trash-alt']"
           style="font-size: 20px"
           v-show="Admin_State"
         />
         <div class="title">{{ Book.BookName }}</div>
-        <div class="size">{{ Book.BookSize }}</div>
-        <a class="UploadBook" :href="Book.BookLink">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          "
+        >
+          <div class="size">{{ Book.BookSize }}</div>
+          <div class="conter">
+            <span>{{ Book.BookCount }}</span>
+            تحميلات
+          </div>
+        </div>
+        <a
+          class="UploadBook"
+          :href="Book.BookLink"
+          @click="incrementCounter(Book, index)"
+        >
           <font-awesome-icon :icon="['fas', 'upload']" />
           <span>تحميل الكتاب</span>
         </a>
@@ -396,6 +412,7 @@ import {
   updateDoc,
   deleteField,
   arrayUnion,
+  // getDatabase,
 } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
@@ -453,6 +470,8 @@ export default {
       Mian_Msg: null,
       MSG_Online: "انت غير متصل بالإنترنت !",
       online: null,
+      conuter: 0,
+      Counter_Array: [],
     };
   },
   async created() {
@@ -474,6 +493,7 @@ export default {
       this.Get_Data_1();
 
       this.Get_Data_2();
+      this.conuterFunction();
     }, 2000);
     setTimeout(() => {
       this.Get_Data();
@@ -485,6 +505,52 @@ export default {
     }, 4000);
   },
   methods: {
+    async incrementCounter(book, index) {
+      book.BookCount += 1;
+      let subject = this.Subject_Name;
+      let TheClass = this.Class;
+
+      try {
+        const docRef = doc(db, `كتب ${TheClass}`, subject);
+
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          // 3. تحديث البيانات
+          const bookData = docSnap.data().books;
+          const updatedBooks = bookData.map((item, Index_1) => {
+            if (Index_1 === index) {
+              return { ...item, BookCount: book.BookCount };
+            }
+            return item;
+          });
+
+          const newData = { books: updatedBooks };
+
+          await updateDoc(docRef, newData);
+          console.log("تم تحديث البيانات بنجاح!");
+        } else {
+          console.log("المستند غير موجود.");
+        }
+      } catch (error) {
+        console.error("حدث خطأ أثناء تحديث البيانات:", error);
+      }
+    },
+
+    conuterFunction() {
+      let num = 0;
+      let btn = document
+        .querySelectorAll(".body")[0]
+        .querySelectorAll(".box .UploadBook");
+      for (let i = 0; i < btn.length; i++) {
+        btn[i].addEventListener("click", () => {
+          num = this.Counter_Array[i];
+          num += 1;
+          console.log("btn clicked");
+          document.querySelectorAll(".conter span")[i].innerHTML = num;
+          console.log("num", this.Counter_Array[i]);
+        });
+      }
+    },
     async DeleteRecordings() {
       let subject = this.Subject_Name;
       let TheClass = this.Class;
@@ -723,12 +789,17 @@ export default {
       querySnapshot.forEach((doc) => {
         if (doc.id === subject) {
           this.Books = doc.data().books;
+          for (let i = 0; i < this.Books.length; i++) {
+            console.log(doc.data().books[i].BookCount);
+            this.Counter_Array.push(doc.data().books[i].BookCount);
+          }
         }
       });
       this.showLoading = false;
       setTimeout(() => {
         this.DeleteBook();
       }, 1000);
+      // this.CounterArray.push();
     },
     async Add_Book() {
       this.isClicked = true;
@@ -749,6 +820,7 @@ export default {
             BookName: document.getElementById("TheBook")?.value,
             BookLink: document.getElementById("BookLink")?.value,
             BookSize: document.getElementById("BookSize")?.value,
+            BookCount: 50,
             Time: new Date(),
           };
 
@@ -1159,7 +1231,7 @@ export default {
 .online {
   position: fixed;
   bottom: 0px;
-  background: var(--main-color);
+  background: red;
   width: 100%;
   z-index: 3;
   left: 0;
@@ -1168,6 +1240,11 @@ export default {
   padding: 5px;
   animation: online 0.3s linear;
   // transform: translateY(35px);
+}
+.conter {
+  color: rgb(125, 125, 125);
+  font-size: 12px;
+  font-weight: bold;
 }
 @keyframes online {
   from {
