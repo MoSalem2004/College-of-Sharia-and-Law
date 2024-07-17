@@ -12,11 +12,15 @@
           </p>
         </div>
         <div class="left">
-          <a
+          <!-- <a
             class="button"
             href="../assets/college-of-sharia-and-law.apk"
             download
           >
+            <font-awesome-icon :icon="['fab', 'android']" />
+            <div>تحميل التطبيق</div>
+          </a> -->
+          <a class="button" @click="downloadFile">
             <font-awesome-icon :icon="['fab', 'android']" />
             <div>تحميل التطبيق</div>
           </a>
@@ -51,6 +55,14 @@ export default {
     this.scroll();
   },
   methods: {
+    downloadFile() {
+      const link = document.createElement("a");
+      link.href = "/assets/college-of-sharia-and-law.apk";
+      link.setAttribute("download", "college-of-sharia-and-law.apk");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    },
     scroll() {
       window.addEventListener("scroll", () => {
         if (document.getElementById("cloud")) {
