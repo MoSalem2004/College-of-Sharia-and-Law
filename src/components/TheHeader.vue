@@ -79,7 +79,7 @@ export default {
     background-size: cover;
     background-position: center top;
     background-attachment: fixed;
-    background-color: transparent;
+    background-color: transparent !important;
      box-shadow: 0;
      `;
         document.querySelector(
@@ -175,7 +175,7 @@ export default {
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
-  background-color: transparent !important;
+  background-color: transparent;
   position: fixed;
   top: 0;
   left: 0;
