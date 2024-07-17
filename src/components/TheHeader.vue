@@ -68,12 +68,26 @@ export default {
       if (window.scrollY > 1) {
         document.querySelector(".Header").style.cssText =
           "background:#fff ; box-shadow: 0 0 10px #ddd;";
+        document.querySelector(
+          ".Header .container .sign"
+        ).style.cssText = `color:var(--main-color);border-color:var(--main-color)`;
+        document.querySelector(
+          ".Header .container .logo div"
+        ).style.cssText = `color:var(--main-color);`;
       } else {
         document.querySelector(".Header").style.cssText = `
     background-size: cover;
     background-position: center top;
     background-attachment: fixed;
-    background-color: rgba(255, 255, 255, 0.5803921569);`;
+    background-color: transparent;
+     box-shadow: 0;
+     `;
+        document.querySelector(
+          ".Header .container .sign"
+        ).style.cssText = `color:#fff;border-color:#fff`;
+        document.querySelector(
+          ".Header .container .logo div"
+        ).style.cssText = `color:#fff;`;
       }
     });
   },
@@ -158,12 +172,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .Header {
-  // border-bottom: 1px solid #ddd;
-  background-image: url("../../assets/_4cbf7f3d-57d3-4566-965a-add6ac9c088f.jpg");
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
-  background-color: #ffffff94;
+  background-color: transparent;
   position: fixed;
   top: 0;
   left: 0;
@@ -179,7 +191,7 @@ export default {
       align-items: center;
       gap: 10px;
       div {
-        color: var(--main-color);
+        color: #fff;
         font-weight: bold;
         font-family: system-ui;
       }
@@ -264,9 +276,9 @@ export default {
     }
     .sign {
       // width: 150px;
-      border: 1px solid var(--main-color);
+      border: 1px solid #fff;
       padding: 10px;
-      color: var(--main-color);
+      color: #fff;
       cursor: pointer;
       border-radius: 5px;
       transition: 0.3s;
