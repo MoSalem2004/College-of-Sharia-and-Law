@@ -80,7 +80,7 @@ export default {
     background-position: center top;
     background-attachment: fixed;
     background-color: transparent !important;
-     box-shadow: 0;
+     box-shadow: none;
      `;
         document.querySelector(
           ".Header .container .sign"
@@ -180,7 +180,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 11;
   transition: 0.3s;
   .container {
     display: flex;
