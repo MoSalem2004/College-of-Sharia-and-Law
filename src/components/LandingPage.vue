@@ -158,8 +158,8 @@ export default {
 }
 
 .area {
-  background: #0088ff;
   background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  background: var(--main-color);
   width: 100%;
   height: 100vh;
 }

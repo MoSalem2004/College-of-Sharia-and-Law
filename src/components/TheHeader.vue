@@ -175,7 +175,7 @@ export default {
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
-  background-color: transparent;
+  background-color: transparent !important;
   position: fixed;
   top: 0;
   left: 0;
