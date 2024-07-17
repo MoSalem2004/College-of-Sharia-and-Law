@@ -8,20 +8,6 @@ import TheHeader from "@/components/TheHeader.vue";
 // import TheFooter from "@/components/TheFooter.vue";
 
 export default {
-  mounted() {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 1) {
-        document.querySelector(".Header").style.cssText =
-          "background:#fff ; box-shadow: 0 0 10px #ddd;";
-      } else {
-        document.querySelector(".Header").style.cssText = `
-    background-size: cover;
-    background-position: center top;
-    background-attachment: fixed;
-    background-color: rgba(255, 255, 255, 0.5803921569);`;
-      }
-    });
-  },
   components: {
     TheHeader,
     // TheFooter,
@@ -113,7 +99,7 @@ h2.main-title:last-child {
   background: rgba(51, 51, 51, 0.429);
   width: 100%;
   height: 100%;
-  z-index: 3;
+  z-index: 12;
 }
 .form-floating > label {
   right: 0 !important;

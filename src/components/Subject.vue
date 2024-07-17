@@ -984,8 +984,7 @@ export default {
 .Add_Book {
   display: flex;
   flex-direction: column;
-  z-index: 5;
-
+  z-index: 12;
   background: #fff;
   border-radius: 5px;
   padding: 15px;

@@ -221,7 +221,7 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 3;
+  z-index: 13;
   background: #fff;
   padding: 10px;
   border-radius: 5px;
