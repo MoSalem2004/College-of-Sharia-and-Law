@@ -248,7 +248,7 @@ export default {
       width: 200px;
       top: 55px;
       padding: 10px;
-      z-index: 4;
+      z-index: 140;
       border: 1px solid #ddd;
       border-radius: 5px;
       display: flex;

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import ClassOne from "../views/ClassOne.vue";
 import ClassTwo from "../views/ClassTwo.vue";
@@ -46,8 +46,9 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes,
 });
 
 export default router;
+console.log("URL=>", process.env.BASE_URL);

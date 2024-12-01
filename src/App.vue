@@ -8,6 +8,10 @@ import TheHeader from "@/components/TheHeader.vue";
 // import TheFooter from "@/components/TheFooter.vue";
 
 export default {
+  mounted() {
+    this.$router.push("/");
+    console.log(" mounted() ");
+  },
   components: {
     TheHeader,
     // TheFooter,
@@ -46,6 +50,7 @@ body {
   height: 90vh;
   max-height: 90vh;
   animation: scale 0.5s linear;
+  z-index: 14;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
